@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>The Non Placer</title>
+<link rel="icon" href="/tnp_logo.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--a:#FF2E93;--bg:#0B0B0D;--ink:#F6F1E7;--muted:#A8A3B3;--line:#2B2B33;--yellow:#FFE14D;--cyan:#22E4FF}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);font-family:'DM Sans',system-ui,Arial,sans-serif;color:var(--ink);-webkit-font-smoothing:antialiased;}
+.w{max-width:680px;margin:0 auto;padding:36px 20px 64px;}
+.k{display:inline-block;font-family:'Archivo Black',Arial Black,sans-serif;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:#0B0B0D;background:var(--yellow);border:3px solid #0B0B0D;border-radius:12px;padding:7px 13px;box-shadow:0 0 0 3px var(--ink),4px 5px 0 3px var(--ink);transform:rotate(-2deg);}
+h1{font-family:'Archivo Black',Arial Black,sans-serif;font-weight:400;font-size:clamp(28px,7vw,40px);line-height:1.05;margin:26px 0 20px;border-left:8px solid var(--a);padding-left:14px;text-transform:uppercase;}
+p{font-size:16px;line-height:1.65;color:#D9D4E0;}
+label{display:block;font-family:'Archivo Black',Arial Black,sans-serif;font-size:12px;letter-spacing:.06em;text-transform:uppercase;margin:24px 0 9px;}
+input,textarea{width:100%;border:2px solid #34343D;border-radius:14px;background:#141418;color:var(--ink);font:inherit;font-size:16px;padding:12px 13px;outline:none;}
+input:focus,textarea:focus{border-color:var(--cyan);}
+textarea{min-height:120px;line-height:1.55;}
+img{max-width:100%;height:auto;border-radius:10px;}
+.b{display:inline-block;background:var(--a);color:#fff;border:3px solid #0B0B0D;border-radius:14px;font-family:'Archivo Black',Arial Black,sans-serif;font-size:16px;text-transform:uppercase;letter-spacing:.02em;padding:15px 24px;margin-top:26px;cursor:pointer;text-decoration:none;box-shadow:0 0 0 3px var(--ink),6px 7px 0 3px var(--ink);}
+.b:disabled{opacity:.6;cursor:default}
+.b.dark{background:var(--ink);color:#0B0B0D}.n{font-size:13px;color:var(--muted)}.ok{color:#3CFFA0;font-weight:700}.err{color:#FF4D6D;font-weight:700}
+a{color:var(--yellow)}
+table{color:var(--ink)}td{border-bottom:1px solid var(--line)}
+.ld{margin-top:40px;font-family:'Archivo Black',Arial Black,sans-serif;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.ld:after{content:'';display:inline-block;width:14px;height:14px;margin-left:10px;vertical-align:-2px;border:3px solid #3A3A44;border-top-color:var(--a);border-radius:50%;animation:s 0.8s linear infinite}
+@keyframes s{to{transform:rotate(360deg)}}
+</style>
+</head>
+<body>
+<div class="w"><div class="k">The Non Placer</div><div id="c"><div class="ld">Loading</div></div></div>
+<script>
+// Pagine per artisti e per Francesco, servite dalla landing: i dati arrivano dal backend (Apps Script) via fetch,
+// così funzionano anche con più account Google aperti nel browser.
+(function(){
+  var API='https://script.google.com/macros/s/AKfycbzrdgQg9Ykt9aJtpHWog9E2XVNqSDv80UXV4TEWPD4bDzOobFxWud-BKMbbaFPrrYX7/exec';
+  var seg=location.pathname.split('/').filter(Boolean).map(decodeURIComponent);
+  var kinds={ok:'approve',edit:'edit',withdraw:'withdraw',mod:'mod',pannello:'admin'};
+  var kind=kinds[seg[0]], q='';
+  if(kind==='mod')q='&id='+encodeURIComponent(seg[1]||'')+'&k='+encodeURIComponent(seg[2]||'');
+  else if(kind==='admin')q='&key='+encodeURIComponent(seg[1]||'');
+  else q='&t='+encodeURIComponent(seg[1]||'');
+  var c=document.getElementById('c');
+  function fail(){c.innerHTML='<h1>Ops</h1><p>La pagina non si è caricata, riprova tra un minuto.<br>The page did not load, please try again in a minute.</p>';}
+  if(!kind||!seg[1]){fail();return;}
+
+  // stessa interfaccia di google.script.run, ma via fetch
+  function runner(ok,ko){
+    return new Proxy({},{get:function(_,name){
+      if(name==='withSuccessHandler')return function(h){return runner(h,ko);};
+      if(name==='withFailureHandler')return function(h){return runner(ok,h);};
+      return function(){
+        var args=[].slice.call(arguments);
+        fetch(API,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({action:'rpc',fn:name,args:args})})
+          .then(function(r){return r.json();})
+          .then(function(j){ if(j&&j.ok){ if(ok)ok(j.result); } else if(ko){ ko(j); } })
+          .catch(function(e){ if(ko)ko(e); });
+      };
+    }});
+  }
+  window.google={script:{run:runner(null,null)}};
+
+  fetch(API+'?action=page_json&kind='+kind+q).then(function(r){return r.json();}).then(function(j){
+    if(!j||!j.ok){fail();return;}
+    if(/^#[0-9a-f]{6}$/i.test(j.accent||''))document.documentElement.style.setProperty('--a',j.accent);
+    if(j.title)document.title=j.title;
+    c.innerHTML=j.inner;
+    // gli <script> inseriti con innerHTML non partono da soli
+    [].forEach.call(c.querySelectorAll('script'),function(old){
+      var s=document.createElement('script');s.textContent=old.textContent;old.parentNode.replaceChild(s,old);
+    });
+  }).catch(fail);
+})();
+</script>
+</body>
+</html>

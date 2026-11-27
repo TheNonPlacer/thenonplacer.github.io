@@ -1,0 +1,1479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>THE NON PLACER — Open Call: your artwork on the next cover</title>
+<meta name="description" content="The Non Placer is a digital art magazine on Instagram: every issue is a cover made from an existing artwork, published in collab with the artist. Free, open to every artist. Send your work in a few minutes.">
+<meta name="theme-color" content="#0B0B0D">
+<meta property="og:title" content="THE NON PLACER — Open Call">
+<meta property="og:description" content="Your artwork on the next cover. Free, open to every artist, published in collab on Instagram.">
+<meta property="og:image" content="tnp_logo.jpg">
+<link rel="icon" href="tnp_logo.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=DM+Sans:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="preload" href="tnp_masthead.png" as="image">
+<style>
+:root{
+  --bg:#0B0B0D;--card:#141418;--card2:#1B1B21;--ink:#F6F1E7;--muted:#A8A3B3;--line:#2B2B33;
+  --pink:#FF2E93;--cyan:#22E4FF;--yellow:#FFE14D;--purple:#8C3BFF;--orange:#FF7A1A;--lime:#B6FF3B;
+  --ok:#3CFFA0;--err:#FF4D6D;
+  --disp:'Archivo Black','Arial Black',Impact,sans-serif;
+  --body:'DM Sans',system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-weight:400;min-height:100vh;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+a{color:inherit;}
+::selection{background:var(--pink);color:#000;}
+
+/* ── ticker ── */
+.ticker-wrap{overflow:hidden;background:var(--yellow);color:#0B0B0D;border-bottom:3px solid #0B0B0D;}
+.ticker{display:flex;width:max-content;animation:tick 38s linear infinite;padding:9px 0;}
+.ticker-item{font-family:var(--disp);font-size:13px;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap;padding:0 18px;}
+.ticker-sep{font-size:14px;line-height:1;align-self:center;}
+@keyframes tick{to{transform:translateX(-50%);}}
+
+/* ── stickers & sparkles ── */
+.stk{display:inline-block;font-family:var(--disp);text-transform:uppercase;letter-spacing:.02em;color:#0B0B0D;
+  background:var(--pink);border:3px solid #0B0B0D;border-radius:14px;padding:8px 16px 9px;line-height:1;
+  box-shadow:0 0 0 3px var(--ink),5px 6px 0 3px var(--ink);}
+.stk.c{background:var(--cyan);}.stk.y{background:var(--yellow);}.stk.p{background:var(--purple);color:var(--ink);}.stk.o{background:var(--orange);}
+.spark{position:absolute;width:34px;height:34px;color:var(--ink);pointer-events:none;animation:tw 3.2s ease-in-out infinite;}
+.spark svg{width:100%;height:100%;display:block;}
+@keyframes tw{0%,100%{transform:scale(1) rotate(0)}50%{transform:scale(.72) rotate(18deg)}}
+
+/* ── hero ── */
+.hero{max-width:1180px;margin:0 auto;padding:28px 20px 10px;display:grid;grid-template-columns:1.35fr .9fr;gap:20px;align-items:stretch;}
+.hero-card{position:relative;container-type:inline-size;background:#000;border:2px solid var(--line);border-radius:28px;padding:30px 30px 34px;overflow:hidden;}
+.pills{display:flex;flex-wrap:wrap;gap:6px;border:2px solid var(--ink);border-radius:999px;padding:6px 10px;width:max-content;max-width:100%;}
+.pills span{font-family:var(--disp);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;padding:2px 6px;}
+.wordmark{font-family:var(--disp);font-weight:400;line-height:.86;letter-spacing:-.02em;margin:26px 0 8px;text-transform:uppercase;}
+.wordmark .w1{display:block;font-size:clamp(22px,3.4vw,38px);letter-spacing:.32em;color:var(--ink);margin-bottom:6px;}
+.wordmark .w2{display:block;font-size:clamp(52px,9.5vw,128px);font-size:min(19.5cqw,150px);}
+.wordmark .grad{background:linear-gradient(92deg,var(--yellow) 0%,var(--orange) 28%,var(--pink) 62%,var(--purple) 100%);-webkit-background-clip:text;background-clip:text;color:transparent;}
+.tagline{font-family:var(--disp);font-size:clamp(15px,2vw,21px);line-height:1.18;text-transform:uppercase;margin:18px 0 0;max-width:560px;}
+.tagline em{font-style:normal;color:var(--pink);}
+.hero-cta{display:flex;flex-wrap:wrap;align-items:center;gap:16px;margin-top:26px;}
+.btn-hot{display:inline-flex;align-items:center;gap:10px;font-family:var(--disp);font-size:16px;text-transform:uppercase;text-decoration:none;color:#0B0B0D;background:var(--pink);
+  border:3px solid #0B0B0D;border-radius:16px;padding:14px 22px;box-shadow:0 0 0 3px var(--ink),6px 7px 0 3px var(--ink);transition:transform .2s,box-shadow .2s;}
+.btn-hot:hover{transform:translate(-2px,-2px) rotate(-1deg);box-shadow:0 0 0 3px var(--ink),9px 10px 0 3px var(--ink);}
+.next-no{font-weight:700;font-size:14px;color:var(--muted);}
+.next-no b{font-family:var(--disp);color:var(--cyan);font-weight:400;}
+.hero-side{position:relative;background:var(--ink);border-radius:28px;overflow:hidden;display:flex;align-items:center;justify-content:center;min-height:360px;border:2px solid var(--line);}
+.hero-side img{width:76%;max-width:330px;height:auto;display:block;transform:rotate(3deg);border-radius:10px;box-shadow:0 18px 40px rgba(0,0,0,.35);}
+.hero-side .stk{position:absolute;z-index:2;top:18px;left:18px;transform:rotate(-6deg);font-size:13px;}
+.hero-side .stk.c{top:auto;left:auto;bottom:20px;right:18px;transform:rotate(5deg);}
+
+/* ── intro / steps ── */
+.intro{max-width:1180px;margin:0 auto;padding:26px 20px 6px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;}
+.step{background:var(--card);border:2px solid var(--line);border-radius:22px;padding:22px 20px 20px;}
+.step .n{font-family:var(--disp);font-size:44px;line-height:1;display:block;margin-bottom:10px;}
+.step:nth-child(1) .n{color:var(--pink);}.step:nth-child(2) .n{color:var(--cyan);}.step:nth-child(3) .n{color:var(--yellow);}
+.step h3{font-family:var(--disp);font-weight:400;font-size:17px;text-transform:uppercase;margin-bottom:8px;}
+.step p{font-size:14.5px;line-height:1.55;color:var(--muted);}
+.about{max-width:1180px;margin:0 auto;padding:16px 20px 0;font-size:15px;line-height:1.65;color:var(--muted);}
+.about a{color:var(--ink);font-weight:700;}
+
+/* ── form ── */
+main{max-width:760px;margin:0 auto;padding:40px 20px 90px;}
+.section-block{display:flex;align-items:center;gap:14px;margin:56px 0 28px;}
+.section-block:first-of-type{margin-top:10px;}
+.section-block .stk{font-size:clamp(18px,3.4vw,26px);transform:rotate(-2deg);}
+.section-block .section-number{font-family:var(--disp);font-size:14px;color:var(--muted);}
+.section-title{display:none;}
+.panel{background:var(--card);border:2px solid var(--line);border-radius:24px;padding:26px 22px;margin-bottom:18px;}
+.field-group{margin-bottom:30px;}
+.field-group:last-child{margin-bottom:0;}
+label,.lbl{display:block;font-family:var(--disp);font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink);margin-bottom:10px;}
+input[type=text],input[type=email],textarea{width:100%;background:#0B0B0D;border:2px solid #34343D;border-radius:14px;color:var(--ink);
+  font-family:var(--body);font-weight:500;font-size:16px;padding:13px 14px;outline:none;transition:border-color .2s,box-shadow .2s;display:block;}
+textarea{resize:vertical;line-height:1.55;min-height:120px;}
+input:focus,textarea:focus{border-color:var(--cyan);box-shadow:0 0 0 3px rgba(34,228,255,.18);}
+input.err,textarea.err{border-color:var(--err);}
+input::placeholder,textarea::placeholder{color:#6E6A78;font-weight:400;}
+.counter{font-size:12px;color:var(--muted);text-align:right;margin-top:7px;font-variant-numeric:tabular-nums;font-weight:700;}
+.counter.over{color:var(--err);}
+.field-hint{font-size:13px;color:var(--muted);margin-top:8px;line-height:1.55;}
+
+/* specs + help link under the uploads */
+.specs{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px;}
+.chip{font-size:11.5px;font-weight:700;letter-spacing:.03em;border:2px solid #3A3A44;border-radius:999px;padding:4px 10px;color:var(--ink);background:#0B0B0D;}
+.chip.hot{border-color:var(--cyan);color:var(--cyan);}
+.help-link{display:inline-block;margin-top:12px;font-size:13px;font-weight:700;color:var(--yellow);text-decoration:none;border-bottom:2px solid currentColor;}
+.help-link:hover{color:var(--pink);}
+.img-note{display:none;margin-top:12px;font-size:13px;font-weight:600;line-height:1.5;padding:10px 12px;border-radius:12px;max-width:420px;}
+.img-note.show{display:block;}
+.img-note.info{background:rgba(34,228,255,.1);color:var(--cyan);}
+.img-note.warn{background:rgba(255,225,77,.12);color:var(--yellow);}
+
+/* avatar */
+.avatar-section{display:flex;flex-direction:column;align-items:flex-start;margin-bottom:34px;}
+.avatar-label{font-family:var(--disp);font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:16px;display:block;}
+.avatar-wrap{position:relative;display:inline-block;}
+.avatar-outer{width:160px;height:160px;border-radius:50%;position:relative;cursor:pointer;transition:transform .45s cubic-bezier(.34,1.56,.64,1),box-shadow .3s;
+  box-shadow:0 0 0 4px #0B0B0D,0 0 0 7px var(--pink);}
+.avatar-outer.drag-hover{transform:scale(1.08);box-shadow:0 0 0 4px #0B0B0D,0 0 0 7px var(--cyan);}
+.avatar-outer.has-image{cursor:grab;}
+.avatar-outer.has-image:active{cursor:grabbing;}
+#avatarCanvas{display:block;border-radius:50%;width:160px;height:160px;}
+.av-drop-hint{position:absolute;inset:0;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;pointer-events:none;background:var(--pink);color:#0B0B0D;}
+.avatar-outer.drag-hover .av-drop-hint{background:var(--cyan);}
+.av-drop-hint.hidden{display:none;}
+.av-drop-icon{font-family:var(--disp);font-size:30px;line-height:1;}
+.av-drop-text{font-family:var(--disp);font-size:10px;letter-spacing:.06em;text-transform:uppercase;text-align:center;line-height:1.3;padding:0 18px;}
+.avatar-btns,.cover-btns{display:flex;gap:10px;margin-top:16px;flex-wrap:wrap;}
+.avatar-hint,.cover-hint{font-size:13px;color:var(--muted);margin-top:10px;line-height:1.55;}
+.cover-hint strong{color:var(--ink);}
+
+/* cover / third page canvases */
+.cover-outer{position:relative;display:inline-block;vertical-align:top;border-radius:6px;box-shadow:0 0 0 3px #0B0B0D,0 0 0 6px var(--ink),10px 12px 0 6px var(--ink);}
+#coverCanvas,#terzaCanvas{display:block;border-radius:4px;transition:transform .4s cubic-bezier(.34,1.56,.64,1);cursor:grab;}
+#coverCanvas.drag-hover,#terzaCanvas.drag-hover{transform:scale(1.03);}
+#coverCanvas.locked,#terzaCanvas.locked{cursor:default;}
+#terzaCanvas{background:#fff;}
+.canvas-drop-overlay{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:22px;cursor:pointer;
+  pointer-events:none;background:rgba(11,11,13,.86);border-radius:4px;transition:background .2s;}
+.canvas-drop-overlay.active{pointer-events:all;}
+.canvas-drop-overlay.drag-hover-ov{background:rgba(255,46,147,.35);}
+.ov-icon{font-family:var(--disp);font-size:46px;line-height:1;color:var(--pink);margin-bottom:12px;display:block;}
+.ov-title{font-family:var(--disp);font-size:15px;text-transform:uppercase;display:block;margin-bottom:10px;color:var(--ink);}
+.ov-sub{font-size:12.5px;color:var(--muted);line-height:1.6;}
+.ov-spec{font-family:var(--disp);font-size:13px;color:#0B0B0D;background:var(--yellow);border-radius:999px;padding:5px 12px;margin-top:14px;display:inline-block;}
+.terza-template-below{background:#fff;padding:14px 16px 20px;width:288px;border-radius:0 0 4px 4px;}
+#terzaOuter{cursor:pointer;}
+#terzaOuter .canvas-drop-overlay{bottom:auto;height:288px;border-radius:4px 4px 0 0;}
+.terza-artwork-badge{display:inline-block;background:#E89EB8;color:#1C1C1C;font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:3px 8px 4px;margin-bottom:9px;}
+.terza-artwork-title{font-size:15px;font-weight:900;color:#F0A8C2;margin:0 0 7px;line-height:1.2;word-break:break-word;}
+.terza-artwork-desc-preview{font-size:11px;font-weight:400;color:#9A7088;margin:0;line-height:1.5;word-break:break-word;}
+.cover-disclaimer{margin-top:22px;font-size:13px;line-height:1.6;color:var(--muted);max-width:520px;}
+.cover-disclaimer strong{color:var(--ink);}
+
+/* buttons */
+.btn-s{font-family:var(--disp);font-size:12px;letter-spacing:.04em;text-transform:uppercase;color:#0B0B0D;background:var(--ink);border:2px solid #0B0B0D;border-radius:12px;padding:10px 15px;cursor:pointer;
+  box-shadow:3px 3px 0 0 var(--cyan);transition:transform .15s,box-shadow .15s,background .15s;}
+.btn-s:hover{transform:translate(-1px,-1px);box-shadow:5px 5px 0 0 var(--pink);}
+.btn-s.go{background:var(--lime);}
+.scale-row{display:flex;align-items:center;gap:12px;margin-top:14px;width:100%;}
+.scale-lbl{font-family:var(--disp);font-size:11px;text-transform:uppercase;color:var(--muted);}
+.scale-slider{-webkit-appearance:none;appearance:none;flex:1;height:6px;background:#2E2E36;border-radius:4px;outline:none;cursor:pointer;}
+.scale-slider::-webkit-slider-thumb{-webkit-appearance:none;width:20px;height:20px;border-radius:50%;background:var(--yellow);border:3px solid #0B0B0D;cursor:pointer;}
+.scale-slider::-moz-range-thumb{width:16px;height:16px;border-radius:50%;background:var(--yellow);border:3px solid #0B0B0D;cursor:pointer;}
+.scale-val{font-family:var(--disp);font-size:11px;color:var(--muted);min-width:40px;text-align:right;}
+
+/* moderation status */
+.mod-status{display:none;margin-top:12px;font-size:12.5px;font-weight:700;letter-spacing:.02em;line-height:1.5;max-width:420px;}
+.mod-status.show{display:block;}
+.mod-status.checking{color:var(--muted);}
+.mod-status.ok{color:var(--ok);}
+.mod-status.bad{color:var(--err);}
+
+/* consent + submit */
+.consent{display:flex;gap:14px;align-items:flex-start;font-size:14px;line-height:1.6;color:var(--muted);cursor:pointer;margin:34px 0 8px;font-family:var(--body);text-transform:none;letter-spacing:0;}
+.consent input{margin-top:3px;width:22px;height:22px;flex-shrink:0;accent-color:var(--pink);}
+.submit-area{margin-top:30px;background:var(--card2);border:2px solid var(--line);border-radius:26px;padding:28px 22px 26px;text-align:center;}
+.submit-label{font-family:var(--disp);font-size:clamp(28px,6vw,46px);text-transform:uppercase;display:block;line-height:1;margin-bottom:20px;}
+.submit-label .grad{background:linear-gradient(92deg,var(--cyan),var(--purple),var(--pink));-webkit-background-clip:text;background-clip:text;color:transparent;}
+.btn-submit{font-family:var(--disp);font-size:clamp(17px,3vw,22px);text-transform:uppercase;letter-spacing:.02em;color:#0B0B0D;background:var(--pink);border:3px solid #0B0B0D;border-radius:18px;
+  padding:18px 34px;cursor:pointer;width:100%;max-width:440px;box-shadow:0 0 0 3px var(--ink),7px 8px 0 3px var(--ink);transition:transform .2s,box-shadow .2s,background .2s;}
+.btn-submit:hover{transform:translate(-2px,-2px);box-shadow:0 0 0 3px var(--ink),10px 11px 0 3px var(--ink);}
+.btn-submit.disabled{background:#2E2E36;color:#8D8898;box-shadow:0 0 0 3px #4A4A55,7px 8px 0 3px #4A4A55;}
+.err-banner{display:none;color:#0B0B0D;background:var(--yellow);border-radius:14px;padding:12px 14px;font-size:14px;margin:22px auto 0;line-height:1.55;font-weight:700;text-align:left;max-width:560px;}
+.err-banner.bad{background:var(--err);color:#fff;}
+.iab-note{display:none;background:#16161B;color:#fff;border:2px solid var(--yellow);border-radius:14px;padding:11px 14px;font-size:13.5px;line-height:1.5;margin:0 auto 18px;max-width:560px;text-align:left;}
+.iab-note a{color:var(--yellow);font-weight:700;white-space:nowrap;}
+.submit-note{display:none;font-size:14px;font-weight:700;color:var(--cyan);margin-top:16px;line-height:1.6;}
+.confirm-note{margin:22px auto 0;max-width:560px;font-size:14px;line-height:1.6;color:var(--ink);background:#0B0B0D;border:2px dashed #3A3A44;border-radius:16px;padding:14px 16px;text-align:left;}
+.confirm-note b{color:var(--lime);}
+.confirm-note a{color:var(--yellow);font-weight:700;}
+.follow-links{margin-top:22px;display:flex;flex-direction:column;gap:6px;}
+.follow-line{font-size:14px;color:var(--muted);}
+.follow-line a{color:var(--ink);font-weight:700;}
+.hp{position:absolute!important;left:-9999px!important;width:1px;height:1px;opacity:0;}
+
+/* success */
+#successScreen{display:none;max-width:760px;margin:30px auto 60px;padding:44px 24px 40px;text-align:center;background:var(--card);border:2px solid var(--line);border-radius:28px;}
+#successScreen.show{display:block;}
+.success-check{font-family:var(--disp);font-size:clamp(70px,14vw,130px);line-height:.9;display:block;background:linear-gradient(92deg,var(--lime),var(--cyan));-webkit-background-clip:text;background-clip:text;color:transparent;}
+.success-title{font-family:var(--disp);font-weight:400;font-size:clamp(26px,5vw,44px);text-transform:uppercase;margin:12px 0 16px;}
+.success-sent{font-size:16px;line-height:1.65;color:var(--ink);max-width:540px;margin:0 auto 14px;}
+.success-sent b{color:var(--lime);}
+.success-small{font-size:14px;line-height:1.6;color:var(--muted);max-width:540px;margin:0 auto 34px;}
+.success-follow-label{font-family:var(--disp);font-size:12px;text-transform:uppercase;color:var(--muted);margin-bottom:16px;display:block;}
+.success-links{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+.success-link{font-family:var(--disp);font-size:15px;text-transform:uppercase;text-decoration:none;color:#0B0B0D;background:var(--cyan);border:3px solid #0B0B0D;border-radius:14px;padding:12px 18px;box-shadow:4px 5px 0 0 var(--ink);}
+.success-link:nth-child(2){background:var(--yellow);}
+
+/* gallery */
+.gal-head{max-width:1180px;margin:0 auto;padding:30px 20px 18px;display:flex;align-items:center;gap:14px;flex-wrap:wrap;}
+.gal-head .stk{font-size:clamp(18px,3.4vw,26px);transform:rotate(-1.5deg);}
+.gal-head p{color:var(--muted);font-size:14px;}
+.covers-gallery-section{overflow:hidden;padding:16px 0 30px;}
+.covers-track-wrap{overflow:hidden;width:100%;cursor:grab;}
+.covers-track-wrap.dragging{cursor:grabbing;}
+.covers-track-wrap.dragging img{pointer-events:none;}
+.covers-track{display:flex;gap:16px;width:max-content;animation:coverScroll 70s linear infinite;will-change:transform;padding:8px 0;}
+.covers-track:hover{animation-play-state:paused;}
+.covers-track img{height:240px;width:180px;display:block;border-radius:14px;object-fit:cover;flex-shrink:0;border:3px solid #0B0B0D;box-shadow:0 0 0 3px var(--ink);
+  transition:transform .35s cubic-bezier(.34,1.56,.64,1);user-select:none;background:#222;}
+.covers-track img:nth-child(3n+1){transform:rotate(-2deg);}
+.covers-track img:nth-child(3n+2){transform:rotate(1.5deg);}
+.covers-track img:hover{transform:scale(1.06) rotate(0);}
+@keyframes coverScroll{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+
+/* faq */
+.faq-section{max-width:860px;margin:0 auto;padding:40px 20px 30px;}
+.faq-head{display:flex;align-items:center;gap:14px;margin-bottom:22px;flex-wrap:wrap;}
+.faq-head .stk{font-size:clamp(18px,3.4vw,26px);transform:rotate(-2deg);}
+.faq-section-sub{color:var(--muted);font-size:14px;}
+.faq-item{background:var(--card);border:2px solid var(--line);border-radius:18px;margin-bottom:10px;overflow:hidden;scroll-margin-top:16px;}
+.faq-item.hl{border-color:var(--yellow);}
+.faq-q{width:100%;background:none;border:none;color:var(--ink);font-family:var(--disp);font-size:15px;letter-spacing:.01em;text-transform:uppercase;text-align:left;padding:18px 18px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;}
+.faq-icon{font-size:22px;line-height:1;transition:transform .3s;color:var(--pink);flex-shrink:0;}
+.faq-item.open .faq-icon{transform:rotate(45deg);}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .45s ease;}
+.faq-item.open .faq-a{max-height:1600px;}
+.faq-a-inner{padding:0 18px 20px;font-size:15px;line-height:1.7;color:#D9D4E0;}
+.faq-a-inner strong{color:var(--ink);}
+.faq-a-inner ul{margin:8px 0 6px 18px;}
+.faq-a-inner li{margin-bottom:6px;}
+.faq-a-inner a{color:var(--yellow);font-weight:700;}
+
+/* footer */
+footer{max-width:1180px;margin:20px auto 0;padding:30px 20px 46px;border-top:2px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;font-size:14px;color:var(--muted);}
+footer a{color:var(--ink);font-weight:700;text-decoration:none;}
+.footer-ig{font-family:var(--disp);text-transform:uppercase;}
+
+/* modal */
+.tnp-modal{position:fixed;inset:0;background:rgba(0,0,0,.72);display:none;align-items:center;justify-content:center;z-index:999;padding:20px;}
+.tnp-modal.show{display:flex;}
+.tnp-modal-box{background:var(--ink);color:#0B0B0D;max-width:480px;width:100%;padding:30px 26px 26px;border:3px solid #0B0B0D;border-radius:24px;box-shadow:0 0 0 3px var(--pink),10px 12px 0 3px var(--pink);}
+.tnp-modal-box h3{font-family:var(--disp);font-weight:400;text-transform:uppercase;font-size:22px;line-height:1.1;margin-bottom:14px;}
+.tnp-modal-box p{font-size:15px;line-height:1.65;margin-bottom:22px;white-space:pre-line;}
+.tnp-modal-box a{color:#0B0B0D;font-weight:700;}
+.tnp-modal-box .btn-s{box-shadow:3px 3px 0 0 var(--pink);}
+.tnp-modal-actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center;}
+.tnp-modal-actions .faqlink{font-size:13px;font-weight:700;}
+
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr;}
+  .hero-side{min-height:300px;}
+  .intro{grid-template-columns:1fr;}
+}
+@media(max-width:560px){
+  .hero-card{padding:22px 18px 26px;border-radius:22px;}
+  .panel{padding:22px 16px;}
+  .pills span:nth-child(n+4){display:none;}
+  .hero-card .sp1{display:none;}
+  .hero-side img{width:62%;max-width:240px;}
+  .covers-track img{height:200px;width:150px;}
+  footer{flex-direction:column;align-items:flex-start;}
+}
+@media(max-width:560px){#successScreen{margin:20px 14px 50px;padding:34px 18px 32px;}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="sp" viewBox="0 0 24 24"><path fill="currentColor" d="M12 0c.8 6.4 5 10.8 12 12-7 1.2-11.2 5.6-12 12-.8-6.4-5-10.8-12-12 7-1.2 11.2-5.6 12-12z"/></symbol></svg>
+
+<div class="ticker-wrap" aria-hidden="true">
+  <div class="ticker">
+    <span class="ticker-item">The Non Placer</span><span class="ticker-sep">✦</span>
+    <span class="ticker-item">Open call for artists</span><span class="ticker-sep">✦</span>
+    <span class="ticker-item">N°0147</span><span class="ticker-sep">✦</span>
+    <span class="ticker-item">Your art on the next cover</span><span class="ticker-sep">✦</span>
+    <span class="ticker-item">Free · in collab on Instagram</span><span class="ticker-sep">✦</span>
+    <span class="ticker-item">The Non Placer</span><span class="ticker-sep">✦</span>
+    <span class="ticker-item">Open call for artists</span><span class="ticker-sep">✦</span>
+    <span class="ticker-item">N°0147</span><span class="ticker-sep">✦</span>
+    <span class="ticker-item">Your art on the next cover</span><span class="ticker-sep">✦</span>
+    <span class="ticker-item">Free · in collab on Instagram</span><span class="ticker-sep">✦</span>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="hero-card">
+    <span class="spark sp1" style="top:22px;right:26px;"><svg><use href="#sp"/></svg></span>
+    <span class="spark" style="bottom:34px;right:90px;width:22px;height:22px;animation-delay:1.2s;color:var(--cyan)"><svg><use href="#sp"/></svg></span>
+    <div class="pills" aria-hidden="true"><span>Painting</span><span>Illustration</span><span>Photo</span><span>Collage</span><span>3D</span><span>Digital</span></div>
+    <h1 class="wordmark"><span class="w1">The</span><span class="w2 grad">Non</span><span class="w2 grad">Placer</span></h1>
+    <p class="tagline">A digital art magazine where <em>your artwork</em> becomes the next cover.</p>
+    <div class="hero-cta">
+      <a href="#formWrap" class="btn-hot">Send your artwork ↓</a>
+      <span class="next-no">Next issue: <b id="nextNo">N°0147</b></span>
+    </div>
+  </div>
+  <div class="hero-side" aria-hidden="true">
+    <span class="stk">Open call</span>
+    <img src="c0127.webp" width="240" height="320" alt="">
+    <span class="stk c">It's free ✦</span>
+  </div>
+</header>
+
+<section class="intro" aria-label="How it works">
+  <div class="step"><span class="n">01</span><h3>Send your work</h3><p>Fill in the form below: photo or avatar, a short bio, one artwork with title and description. It takes a few minutes.</p></div>
+  <div class="step"><span class="n">02</span><h3>We design the cover</h3><p>Your artwork is laid out on The Non Placer template. You get an email confirmation right away and then the cover preview.</p></div>
+  <div class="step"><span class="n">03</span><h3>You approve, we publish</h3><p>Nothing goes online without your OK. The cover is published on <a href="https://www.instagram.com/thenonplacer/" target="_blank" rel="noopener" style="color:var(--ink);font-weight:700">@thenonplacer</a> in collab with your profile.</p></div>
+</section>
+<p class="about"><b style="color:var(--ink)">The Non Placer</b> is a digital magazine exploring the boundaries of visual language: emerging and established artists, every style, every country. A project by <a href="https://www.instagram.com/_freakering_/" target="_blank" rel="noopener">Freakering</a>.</p>
+
+<main id="formWrap">
+<form id="subForm" novalidate autocomplete="off">
+  <div class="iab-note" id="iabNote" role="note"></div>
+
+  <input type="text" id="fWebsite" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+  <div class="section-block"><span class="stk">01 · Identity</span><span class="section-number">who you are</span><div class="section-title">Identity</div></div>
+
+  <div class="panel">
+  <div class="avatar-section">
+    <span class="avatar-label">Photo / Avatar / Logo</span>
+    <div class="avatar-wrap">
+      <div class="avatar-outer" id="avatarOuter">
+        <canvas id="avatarCanvas" width="160" height="160"></canvas>
+        <div class="av-drop-hint" id="avDropHint">
+          <span class="av-drop-icon">+</span>
+          <span class="av-drop-text">Drop or tap to upload</span>
+        </div>
+      </div>
+      <div class="avatar-btns" id="avCtrlPos" style="display:none;">
+        <button type="button" class="btn-s go" id="avBtnConfirm">Confirm</button>
+        <button type="button" class="btn-s" id="avBtnChange">Change</button>
+      </div>
+      <div class="scale-row" id="avScaleRow" style="display:none;max-width:240px;">
+        <span class="scale-lbl">Scale</span>
+        <input type="range" class="scale-slider" id="avScale" min="10" max="400" value="100">
+        <span class="scale-val" id="avScaleVal">100%</span>
+      </div>
+      <div class="avatar-btns" id="avCtrlLocked" style="display:none;">
+        <button type="button" class="btn-s" id="avBtnEdit">&#9998; Edit</button>
+        <button type="button" class="btn-s" id="avBtnChange2">Change</button>
+      </div>
+      <p class="avatar-hint" id="avHint" style="display:none;">Drag to reposition · use the slider to scale, then <strong>Confirm</strong></p>
+      <div class="mod-status" id="modAvatar"></div>
+      <div class="img-note" id="noteAvatar"></div>
+    </div>
+    <div class="specs"><span class="chip">min 400 × 400 px</span><span class="chip">JPG · PNG · WebP · PDF</span></div>
+    <input type="file" id="avFileIn" accept="image/*,.pdf" style="display:none;">
+  </div>
+
+  <div class="field-group">
+    <label for="fName">Name, Surname or Nickname</label>
+    <input type="text" id="fName" name="Name" placeholder="How we credit you">
+  </div>
+  <div class="field-group">
+    <label for="fBio">Short Bio</label>
+    <textarea id="fBio" name="Short Bio" rows="5" placeholder="Your background, practice, perspective…"></textarea>
+    <div class="counter" id="cBio">0 / 520</div>
+  </div>
+  <div class="field-group">
+    <label for="fInsta">Instagram Profile</label>
+    <input type="text" id="fInsta" name="Instagram" placeholder="@yourprofile or https://www.instagram.com/yourprofile" autocapitalize="off" spellcheck="false">
+    <div class="field-hint">Your @username or the full URL of your Instagram page: the cover is published as a collab with this profile.</div>
+  </div>
+  <div class="field-group">
+    <label for="fEmail">Email</label>
+    <input type="email" id="fEmail" name="Email" placeholder="Where we send your confirmation and cover preview" autocomplete="email">
+    <div class="field-hint">You'll get a confirmation email a few minutes after sending, then the cover preview before it goes online. Never shared.</div>
+  </div>
+  </div>
+
+  <div class="section-block"><span class="stk c">02 · Artwork</span><span class="section-number">your cover</span><div class="section-title">Artwork</div></div>
+
+  <div class="panel">
+  <div class="field-group">
+    <label for="fArtName">Artwork Name</label>
+    <input type="text" id="fArtName" name="Artwork Name" placeholder="Title of the work">
+  </div>
+
+  <div class="field-group">
+    <span class="lbl">Cover Image</span>
+    <div class="cover-outer" id="coverOuter">
+      <canvas id="coverCanvas" width="288" height="428"></canvas>
+      <div class="canvas-drop-overlay active" id="dropOverlay">
+        <span class="ov-icon">+</span>
+        <span class="ov-title">Upload your cover</span>
+        <div class="ov-sub">Drag &amp; drop or tap to browse<br>JPG · PNG · WebP · PDF</div>
+        <span class="ov-spec">1114 × 1654 px</span>
+      </div>
+      <input type="file" id="fileIn" accept="image/*,.pdf,application/pdf" style="display:none;">
+    </div>
+
+    <div class="cover-btns" id="ctrlPosition" style="display:none;">
+      <button type="button" class="btn-s go" id="btnConfirm">Confirm Position</button>
+      <button type="button" class="btn-s" id="btnChange">Change Image</button>
+    </div>
+    <div class="scale-row" id="coverScaleRow" style="display:none;max-width:320px;">
+      <span class="scale-lbl">Scale</span>
+      <input type="range" class="scale-slider" id="coverScale" min="10" max="400" value="100">
+      <span class="scale-val" id="coverScaleVal">100%</span>
+    </div>
+    <div class="cover-btns" id="ctrlLocked" style="display:none;">
+      <button type="button" class="btn-s" id="btnEdit">&#9998; Edit Position</button>
+      <button type="button" class="btn-s" id="btnChange2">Change Image</button>
+    </div>
+    <div class="cover-hint" id="posHint" style="display:none;">Drag to choose the framing, adjust the scale, then click <strong>Confirm Position</strong>.</div>
+    <div class="mod-status" id="modCover"></div>
+    <div class="img-note" id="noteCover"></div>
+
+    <div class="specs"><span class="chip hot">ideal 1114 × 1654 px · vertical 2:3</span><span class="chip">bigger is fine</span><span class="chip">square/horizontal: cropped</span><span class="chip">JPG · PNG · WebP · PDF</span></div>
+    <a class="help-link" href="#faq-images">Problems uploading the image? Read the FAQ →</a>
+
+    <div class="cover-disclaimer">
+      <p><strong>Preview only.</strong> This is a compositional reference: your artwork will be carefully laid out and refined by our graphic designers, so every visual element of your work is highlighted to its fullest potential.</p>
+    </div>
+  </div>
+  </div>
+
+  <div class="section-block"><span class="stk y">03 · Third page</span><span class="section-number">the artwork page</span><div class="section-title">Third Page</div></div>
+
+  <div class="panel">
+  <div class="field-group">
+    <span class="lbl">Third Page Image</span>
+    <div class="cover-outer" id="terzaOuter">
+      <canvas id="terzaCanvas" width="288" height="288"></canvas>
+      <div class="canvas-drop-overlay active" id="tDropOverlay">
+        <span class="ov-icon">+</span>
+        <span class="ov-title">Upload the artwork</span>
+        <div class="ov-sub">Same artwork as the cover is perfect<br>JPG · PNG · WebP · PDF</div>
+        <span class="ov-spec">1015 × 1015 px</span>
+      </div>
+      <input type="file" id="tFileIn" accept="image/*,.pdf,application/pdf" style="display:none;">
+      <div class="terza-template-below">
+        <div><span class="terza-artwork-badge">Artwork</span></div>
+        <div class="terza-artwork-title" id="tTitlePreview">Artwork Title</div>
+        <div class="terza-artwork-desc-preview" id="tDescPreview">Short Artwork Description</div>
+      </div>
+    </div>
+
+    <div class="cover-btns" id="tCtrlPosition" style="display:none;">
+      <button type="button" class="btn-s go" id="tBtnConfirm">Confirm Position</button>
+      <button type="button" class="btn-s" id="tBtnChange">Change Image</button>
+    </div>
+    <div class="scale-row" id="terzaScaleRow" style="display:none;max-width:300px;">
+      <span class="scale-lbl">Scale</span>
+      <input type="range" class="scale-slider" id="terzaScale" min="10" max="400" value="100">
+      <span class="scale-val" id="terzaScaleVal">100%</span>
+    </div>
+    <div class="cover-btns" id="tCtrlLocked" style="display:none;">
+      <button type="button" class="btn-s" id="tBtnEdit">&#9998; Edit Position</button>
+      <button type="button" class="btn-s" id="tBtnChange2">Change Image</button>
+    </div>
+    <div class="cover-hint" id="tPosHint" style="display:none;">Drag to choose the framing, adjust the scale, then click <strong>Confirm Position</strong>.</div>
+    <div class="mod-status" id="modTerza"></div>
+    <div class="img-note" id="noteTerza"></div>
+
+    <div class="specs"><span class="chip hot">ideal 1015 × 1015 px · square</span><span class="chip">you can reuse the cover artwork</span><span class="chip">JPG · PNG · WebP · PDF</span></div>
+    <a class="help-link" href="#faq-images">Problems uploading the image? Read the FAQ →</a>
+  </div>
+
+  <div class="field-group">
+    <label for="fDesc">Artwork Description</label>
+    <textarea id="fDesc" name="Artwork Description" rows="6" placeholder="Concept, process, the story behind the work…"></textarea>
+    <div class="counter" id="cDesc">0 / 660</div>
+  </div>
+  </div>
+
+  <div class="section-block"><span class="stk p">04 · Send</span><span class="section-number">almost done</span></div>
+
+  <label class="consent"><input type="checkbox" id="fConsent"><span>I confirm this is my own work and that it contains no nudity, hateful, violent or violent-political content. I agree it may be published as a cover on @thenonplacer, in collaboration with my Instagram profile.</span></label>
+
+  <div class="submit-area">
+    <span class="submit-label">Ready? <span class="grad">Send it ✦</span></span>
+    <button type="submit" id="btnSubmit" class="btn-submit disabled">Send Submission</button>
+    <div class="err-banner" id="errBanner" role="alert">Please review the highlighted fields.</div>
+    <div class="submit-note" id="submitNote">Uploading your images and checking them: it can take up to a minute, please keep this page open.</div>
+    <div class="confirm-note">✉ <b>If your submission is sent successfully, you'll receive a confirmation email within a few minutes</b> (check spam and promotions too). No email after 15 minutes? Write to <a href="mailto:thenonplacer@gmail.com">thenonplacer@gmail.com</a> or in DM to <a href="https://www.instagram.com/thenonplacer/" target="_blank" rel="noopener">@thenonplacer</a>.</div>
+    <div class="follow-links">
+      <p class="follow-line">Follow us on Instagram → <a href="https://www.instagram.com/thenonplacer/" target="_blank" rel="noopener">@thenonplacer</a></p>
+      <p class="follow-line">Follow the founder → <a href="https://www.instagram.com/_freakering_/" target="_blank" rel="noopener">@_freakering_</a></p>
+    </div>
+  </div>
+
+</form>
+</main>
+
+<div id="successScreen" role="status">
+  <span class="success-check">SENT ✦</span>
+  <h2 class="success-title">Submission received</h2>
+  <p class="success-sent" id="successSent">We've just sent you a <b>confirmation email</b>: it should arrive within a few minutes (check spam and promotions too).</p>
+  <p class="success-small">Next you'll receive the cover preview by email: nothing goes online until you approve it. Didn't get the confirmation after 15 minutes? Write to <a href="mailto:thenonplacer@gmail.com" style="color:var(--yellow);font-weight:700">thenonplacer@gmail.com</a> or DM <a href="https://www.instagram.com/thenonplacer/" target="_blank" rel="noopener" style="color:var(--yellow);font-weight:700">@thenonplacer</a>.</p>
+  <span class="success-follow-label">Follow us on Instagram</span>
+  <div class="success-links">
+    <a class="success-link" href="https://www.instagram.com/thenonplacer/" target="_blank" rel="noopener">@thenonplacer ↗</a>
+    <a class="success-link" href="https://www.instagram.com/_freakering_/" target="_blank" rel="noopener">@_freakering_ ↗</a>
+  </div>
+</div>
+
+<div class="gal-head"><span class="stk o">Past covers</span><p>Some of the artists already published on The Non Placer.</p></div>
+<div class="covers-gallery-section" id="coversGallerySection">
+  <div class="covers-track-wrap">
+    <div class="covers-track" id="coversTrack"></div>
+  </div>
+</div>
+
+<section class="faq-section" id="faq">
+  <div class="faq-head"><span class="stk y">FAQ</span><span class="faq-section-sub">Frequently asked questions</span></div>
+  <div class="faq-item" id="faq-images"><button type="button" class="faq-q">Image sizes and upload problems<span class="faq-icon">+</span></button><div class="faq-a"><div class="faq-a-inner">
+    <strong>Ideal sizes</strong>
+    <ul>
+      <li><strong>Cover:</strong> 1114 × 1654 px or larger, vertical (about 2:3).</li>
+      <li><strong>Third page:</strong> 1015 × 1015 px or larger, square. You can simply upload the cover artwork again.</li>
+      <li><strong>Photo / avatar:</strong> at least 400 × 400 px.</li>
+    </ul>
+    <strong>What works</strong>
+    <ul>
+      <li>Bigger images are always fine: they are scaled down automatically.</li>
+      <li>Square or horizontal images work too if they are large enough (for the cover, about 1500 px on the short side): they are cropped to the vertical format, and you choose the framing by dragging the image.</li>
+      <li>A resolution slightly below the ideal size is fine if the proportions are right (for the cover, from about 830 × 1230 px).</li>
+      <li>If the image is too small, the form tells you right away: export a larger version of the artwork and upload it again.</li>
+      <li>If you zoom in too much, the artwork would look blurry: the form asks you to reduce the scale.</li>
+    </ul>
+    <strong>Formats</strong>
+    <ul>
+      <li>JPG, PNG, WebP and PDF (first page) work in every browser.</li>
+      <li>HEIC photos from iPhone, TIFF and RAW files can't be read by most browsers: export them as JPG or PNG first. On iPhone you can also pick the photo from the Photos gallery: it is converted automatically.</li>
+      <li>Very heavy files (over 40 MB) can block the page on phones: export a JPG under 20 MB.</li>
+    </ul>
+    <strong>Still stuck?</strong>
+    <ul>
+      <li>Try another browser (Chrome, Safari or Firefox), or from a computer.</li>
+      <li>If you opened the page inside the Instagram app, use "Open in browser".</li>
+      <li>Or send everything by email to <a href="mailto:thenonplacer@gmail.com">thenonplacer@gmail.com</a> or in DM to <a href="https://www.instagram.com/thenonplacer/" target="_blank" rel="noopener">@thenonplacer</a> (photo or avatar, short bio, artwork with title and short description): we'll take care of the rest.</li>
+    </ul>
+  </div></div></div>
+  <div class="faq-item" id="faq-email"><button type="button" class="faq-q">I didn't receive the confirmation email<span class="faq-icon">+</span></button><div class="faq-a"><div class="faq-a-inner">When a submission is sent successfully, you receive a confirmation email from <strong>thenonplacer@gmail.com</strong> within a few minutes. Check the spam and promotions folders and that the address you typed is correct. If after 15 minutes there's still nothing, the submission probably didn't go through: write to <a href="mailto:thenonplacer@gmail.com">thenonplacer@gmail.com</a> or in DM to <a href="https://www.instagram.com/thenonplacer/" target="_blank" rel="noopener">@thenonplacer</a> and we'll sort it out together.</div></div></div>
+  <div class="faq-item"><button type="button" class="faq-q">How are the artworks used?<span class="faq-icon">+</span></button><div class="faq-a"><div class="faq-a-inner">All artworks will always remain fully attributed to the artist. On The Non Placer profile, every cover clearly includes the artist's name, their short bio and photo/avatar, and the title and concept of the artwork.<br><br>At this stage, artworks are used exclusively on Instagram. In the future, I would love to release an on-demand printed version of the magazine — but should that happen, all agreements will be re-evaluated together with the artists before any artwork is included. For now the magazine remains purely digital.</div></div></div>
+  <div class="faq-item"><button type="button" class="faq-q">Are there agreements or release forms?<span class="faq-icon">+</span></button><div class="faq-a"><div class="faq-a-inner">At the moment, no release form is required. The artist is not transferring or handing over their artwork. Each cover is simply a <strong>collaborative Instagram post</strong>, visible on both profiles — The Non Placer and the artist's. Authorship remains 100% with the artist, and The Non Placer acts more like a small contemporary art exhibition.</div></div></div>
+  <div class="faq-item"><button type="button" class="faq-q">Are there costs or obligations for the artists?<span class="faq-icon">+</span></button><div class="faq-a"><div class="faq-a-inner"><strong>There is no cost and no obligation.</strong> If an artist ever wishes to remove their post, it can be archived immediately upon request via a simple message — no bureaucracy, no complications. It is, at its core, just an Instagram post.</div></div></div>
+  <div class="faq-item"><button type="button" class="faq-q">What about a future printed magazine?<span class="faq-icon">+</span></button><div class="faq-a"><div class="faq-a-inner">The idea of a printed magazine is still distant and evolving. If one day The Non Placer becomes a print-on-demand publication, it would likely cost around <strong>€23–25</strong> — simply covering printing and shipping. My intention would be: artists receive a free copy, while collectors, galleries and art buyers are the ones paying.<br><br>Traditional magazines cost over €40 plus shipping and often include only the artwork image, without bios or additional context. I want to change that by creating a more meaningful publication.</div></div></div>
+  <div class="faq-item"><button type="button" class="faq-q">What is the long-term vision?<span class="faq-icon">+</span></button><div class="faq-a"><div class="faq-a-inner">In the short term: build an authentic community, encourage collaboration, spark discussions, and generate positive word of mouth. Once we reach 25–50 artists, I would involve young journalists and the artists themselves to write short articles about art.<br><br>In the long term, I envision The Non Placer becoming an <strong>international platform supporting newly founded galleries and very young emerging artists</strong>.<br><br>Conceptually, the project draws inspiration from <em>Italo Calvino's Invisible Cities</em> and from the idea of negation: what is not done, not said, not seen, not known, not thought — whether architectural, abstract, or conceptual.</div></div></div>
+</section>
+
+<footer>
+  <p>The Non Placer — a project by <a class="footer-freakering" href="https://www.instagram.com/_freakering_/" target="_blank" rel="noopener">Freakering</a> · <a href="privacy.html">Privacy</a></p>
+  <a class="footer-ig" href="https://www.instagram.com/thenonplacer/" target="_blank" rel="noopener">@thenonplacer ↗</a>
+</footer>
+
+<div class="tnp-modal" id="tnpModal" role="dialog" aria-modal="true" aria-labelledby="tnpModalTitle"><div class="tnp-modal-box"><h3 id="tnpModalTitle"></h3><p id="tnpModalText"></p><div class="tnp-modal-actions"><button type="button" class="btn-s" id="tnpModalClose">Choose another image</button><a class="faqlink" id="tnpModalFaq" href="#faq-images">Read the FAQ</a></div></div></div>
+<script>
+// ═══════════════════════════════════════════════════════════════════
+// THE NON PLACER — landing (rebranding 25/11/2026)
+// Stesse funzioni di prima + controllo dimensioni immagini, statistiche anonime, messaggi d'errore chiari.
+// ═══════════════════════════════════════════════════════════════════
+var API_URL='https://script.google.com/macros/s/AKfycbzrdgQg9Ykt9aJtpHWog9E2XVNqSDv80UXV4TEWPD4bDzOobFxWud-BKMbbaFPrrYX7/exec';
+const PDFJS='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/';
+const IS_IT=(navigator.language||'').toLowerCase().indexOf('it')===0;
+const L=(en,it)=>IS_IT?it:en;
+
+// ── statistiche anonime: nessun cookie, nessun dato salvato nel browser ──
+const PV=Math.random().toString(36).slice(2,10);
+const QS=new URLSearchParams(location.search);
+let formStarted=false;
+function track(ev,d){
+  try{
+    const coarse=window.matchMedia&&matchMedia('(pointer:coarse)').matches;
+    const body=JSON.stringify({action:'track',ev:ev,pv:PV,site:location.host,path:location.pathname,ref:document.referrer||'',
+      us:QS.get('utm_source')||'',um:QS.get('utm_medium')||'',uc:QS.get('utm_campaign')||'',lang:navigator.language||'',
+      dev:coarse?'mobile':'desktop',d:String(d||'').slice(0,280)});
+    if(navigator.sendBeacon&&navigator.sendBeacon(API_URL,new Blob([body],{type:'text/plain;charset=UTF-8'})))return;
+    fetch(API_URL,{method:'POST',body:body,keepalive:true,headers:{'Content-Type':'text/plain;charset=utf-8'}}).catch(()=>{});
+  }catch(e){}
+}
+function started(){if(!formStarted){formStarted=true;track('form_start');}}
+// Ambiente (anonimo e generico): sistema + browser interno di un'app. Serve a capire se chi arriva dalle app riesce a caricare le immagini.
+const UA=navigator.userAgent||'';
+const ENV=(/Android/i.test(UA)?'android':/iPhone|iPad|iPod/i.test(UA)?'ios':'other')+' '+(/Instagram/i.test(UA)?'ig':/FBAN|FBAV|FB_IAB|FB4A|FBIOS/i.test(UA)?'fb':/; wv\)/.test(UA)?'webview':'browser');
+const IAB_ANDROID=/^android (ig|fb)$/.test(ENV);
+const CHROME_URL='intent://'+location.host+location.pathname+location.search+'#Intent;scheme=https;package=com.android.chrome;S.browser_fallback_url='+encodeURIComponent(location.href)+';end';
+const CHROME_LINK=(t)=>'<a href="'+CHROME_URL+'">'+(t||L('Open in Chrome →','Apri in Chrome →'))+'</a>';
+track('view',ENV);
+// Errori JS: contano solo quelli del nostro codice. Il browser interno di Facebook/Instagram su Android inietta script suoi
+// che, quando la pagina si chiude, lanciano «Error invoking postMessage: Java object is gone» (riga 1): non dipendono
+// dalla landing e non bloccano il form (verificato il 27/11). Finiscono in 'iab_noise', una volta per visita.
+const SCRIPT_LINE=560;
+let iabNoise=false;
+window.addEventListener('error',e=>{
+  const msg=String(e.message||''),file=String(e.filename||''),line=Number(e.lineno||0);
+  const samePage=!file||file.split('#')[0].split('?')[0]===location.href.split('#')[0].split('?')[0];
+  const foreign=/Java object is gone|Error invoking postMessage|^Script error\.?$/i.test(msg)||(file&&file.indexOf(location.origin)!==0)||(samePage&&line>0&&line<SCRIPT_LINE);
+  if(foreign){if(!iabNoise){iabNoise=true;track('iab_noise',msg.slice(0,100)+' @'+line);}return;}
+  track('js_error',msg+' @'+line);
+});
+// Nel browser interno di Instagram/Facebook su Android: suggerimento per aprire la pagina in Chrome se il caricamento non va.
+if(IAB_ANDROID){const n=document.getElementById('iabNote');if(n){n.innerHTML=L('You\'re in the '+(ENV.slice(-2)==='ig'?'Instagram':'Facebook')+' app browser. If uploading your images doesn\'t work, ','Sei nel browser dell\'app '+(ENV.slice(-2)==='ig'?'Instagram':'Facebook')+'. Se il caricamento delle immagini non funziona, ')+CHROME_LINK(L('open this page in Chrome →','apri la pagina in Chrome →'));n.style.display='block';n.querySelector('a').addEventListener('click',()=>track('open_chrome',ENV));}}
+// Tocco sui riquadri di caricamento (una volta per riquadro): se poi non arriva img_ok, il selettore di file dell'app non ha funzionato.
+[['avFileIn','avatar'],['fileIn','cover'],['tFileIn','terza']].forEach(([id,kind])=>{const el=document.getElementById(id);let done=false;if(el)el.addEventListener('click',()=>{if(!done){done=true;track('pick',kind+' '+ENV);}});});
+
+const FULL_W=1114,FULL_H=1654,PW=288,PH=428;
+const SPINE=Math.round(PW*0.038);
+
+const canvas=document.getElementById('coverCanvas');
+const ctx=canvas.getContext('2d');
+const coverOuter=document.getElementById('coverOuter');
+const dropOverlay=document.getElementById('dropOverlay');
+const fileIn=document.getElementById('fileIn');
+
+let img=null,imgX=0,imgY=0,imgW=PW,imgH=PH;
+let dragging=false,dsx=0,dsy=0;
+let locked=false,spineHex='#E8189A';
+let imageLoaded=false;
+
+const BAR=[1,2,1,1,3,1,2,1,1,2,3,1,1,1,2,1,3,2,1,1,2,1,1,3,1,2,1,1];
+
+// masthead (file a parte: la pagina resta leggera)
+const logoImg=new Image();
+logoImg.onload=()=>drawCover();
+logoImg.src='tnp_masthead.png';
+
+function tintLogo(srcImg,hexColor){
+  const oc=document.createElement('canvas');
+  oc.width=srcImg.naturalWidth||srcImg.width;
+  oc.height=srcImg.naturalHeight||srcImg.height;
+  const c=oc.getContext('2d');
+  c.drawImage(srcImg,0,0);
+  const d=c.getImageData(0,0,oc.width,oc.height);
+  const px=d.data;
+  const r=parseInt(hexColor.slice(1,3),16),g=parseInt(hexColor.slice(3,5),16),b=parseInt(hexColor.slice(5,7),16);
+  for(let i=0;i<px.length;i+=4){px[i]=r;px[i+1]=g;px[i+2]=b;}
+  c.putImageData(d,0,0);
+  return oc;
+}
+
+function drawCover(){
+  ctx.clearRect(0,0,PW,PH);
+  ctx.fillStyle='#FFFFFF';ctx.fillRect(0,0,PW,PH);
+  if(img){
+    ctx.save();ctx.beginPath();ctx.rect(0,0,PW,PH);ctx.clip();
+    ctx.drawImage(img,imgX,imgY,imgW,imgH);
+    ctx.restore();
+  }
+  ctx.fillStyle=spineHex;ctx.fillRect(0,0,SPINE,PH);
+  ctx.save();
+  ctx.translate(SPINE/2,PH/2);ctx.rotate(-Math.PI/2);
+  ctx.fillStyle=luminance(spineHex)>.4?'#F4B8CF':'#EDEBE6';
+  ctx.font='500 '+Math.round(PW*.02)+'px "DM Sans",sans-serif';
+  ctx.textAlign='center';ctx.letterSpacing='0.15em';
+  ctx.fillText('THE NON PLACER',0,Math.round(PW*.008));
+  ctx.restore();
+  if(img){
+    const grd=ctx.createLinearGradient(SPINE,0,SPINE,PH*.3);
+    grd.addColorStop(0,'rgba(0,0,0,0.52)');grd.addColorStop(1,'rgba(0,0,0,0)');
+    ctx.fillStyle=grd;ctx.fillRect(SPINE,0,PW-SPINE,PH*.3);
+  }
+  if(logoImg.complete&&logoImg.naturalWidth>0){
+    const lx=SPINE+Math.round(PW*.04);
+    const lw=PW-lx-Math.round(PW*.03);
+    const lh=Math.round(lw*(logoImg.naturalHeight/logoImg.naturalWidth));
+    const ly=Math.round(PH*.03);
+    if(!img){ctx.drawImage(tintLogo(logoImg,'#1C1C1C'),lx,ly,lw,lh);}
+    else{ctx.save();ctx.globalAlpha=0.9;ctx.drawImage(tintLogo(logoImg,spineHex),lx,ly,lw,lh);ctx.restore();}
+  }
+  drawBarcode(PW-Math.round(PW*.16),PH-Math.round(PH*.063),Math.round(PW*.124),Math.round(PH*.028),img?'rgba(28,28,28,0.65)':'rgba(28,28,28,0.3)');
+}
+function drawBarcode(x,y,w,h,col){
+  const tot=BAR.reduce((a,b)=>a+b,0),u=w/tot;
+  ctx.fillStyle=col;let cx=x;
+  for(let i=0;i<BAR.length;i++){if(i%2===0)ctx.fillRect(cx,y,BAR[i]*u-.5,h);cx+=BAR[i]*u;}
+}
+function luminance(hex){
+  const r=parseInt(hex.slice(1,3),16)/255,g=parseInt(hex.slice(3,5),16)/255,b=parseInt(hex.slice(5,7),16)/255;
+  return .2126*r+.7152*g+.0722*b;
+}
+function rgb2hsl(r,g,b){
+  r/=255;g/=255;b/=255;const mx=Math.max(r,g,b),mn=Math.min(r,g,b);
+  let h,s,l=(mx+mn)/2;
+  if(mx===mn)h=s=0;else{const d=mx-mn;s=l>.5?d/(2-mx-mn):d/(mx+mn);switch(mx){case r:h=((g-b)/d+(g<b?6:0))/6;break;case g:h=((b-r)/d+2)/6;break;default:h=((r-g)/d+4)/6;}}
+  return{h:h*360,s:s*100,l:l*100};
+}
+function hsl2hex(h,s,l){
+  h/=360;s/=100;l/=100;let r,g,b;
+  if(s===0)r=g=b=l;else{const hue=(p,q,t)=>{if(t<0)t+=1;if(t>1)t-=1;if(t<1/6)return p+(q-p)*6*t;if(t<1/2)return q;if(t<2/3)return p+(q-p)*(2/3-t)*6;return p;};const q=l<.5?l*(1+s):l+s-l*s,p=2*l-q;r=hue(p,q,h+1/3);g=hue(p,q,h);b=hue(p,q,h-1/3);}
+  const x=v=>Math.round(v*255).toString(16).padStart(2,'0');return'#'+x(r)+x(g)+x(b);
+}
+
+// ═══════════════ CONTROLLO IMMAGINI (dimensioni, formato, peso) ═══════════════
+// Regole (Francesco, 24/11): l'immagine deve bastare al template; più grande va sempre bene;
+// quadrata/orizzontale va bene se abbastanza grande (viene ritagliata); poco più piccola va bene se le proporzioni sono giuste.
+const REQ={cover:{w:FULL_W,h:FULL_H,name:L('cover','copertina')},terza:{w:1015,h:1015,name:L('third page','terza pagina')},avatar:{w:400,h:400,name:L('photo / avatar','foto / avatar')}};
+const MAX_MB=40;
+function sizeVerdict(kind,w,h){
+  const r=REQ[kind];
+  if(kind==='avatar')return Math.min(w,h)>=300?{ok:true,low:Math.min(w,h)<400}:{ok:false};
+  const need=Math.max(r.w/w,r.h/h);                 // quanto andrebbe ingrandita per riempire il formato
+  const ratioDiff=Math.abs((w/h)/(r.w/r.h)-1);       // quanto le proporzioni sono lontane dal template
+  if(need<=1.15)return{ok:true,low:need>1,crop:ratioDiff>0.3};
+  if(need<=1.35&&ratioDiff<=0.08)return{ok:true,low:true};
+  return{ok:false,need:need,ratioDiff:ratioDiff};
+}
+function note(kind,cls,text){
+  const el=document.getElementById('note'+kind.charAt(0).toUpperCase()+kind.slice(1));
+  if(!el)return;
+  if(!text){el.className='img-note';el.textContent='';return;}
+  el.className='img-note show '+cls;el.textContent=text;
+}
+function tooSmallMsg(kind,w,h){
+  const r=REQ[kind];
+  const shape=kind==='cover'?L('vertical, about 2:3','verticale, circa 2:3'):(kind==='terza'?L('square','quadrata'):'');
+  return L('This image is '+w+' × '+h+' px: too small for the '+r.name+'. We need at least '+r.w+' × '+r.h+' px'+(shape?' ('+shape+')':'')+'.\n\nPlease export a larger version of your artwork and upload it again. Bigger images are always fine, and square or horizontal ones work too if they are large enough (they are cropped).',
+    'Questa immagine è '+w+' × '+h+' px: troppo piccola per la '+r.name+'. Servono almeno '+r.w+' × '+r.h+' px'+(shape?' ('+shape+')':'')+'.\n\nEsporta una versione più grande della tua opera e caricala di nuovo. Le immagini più grandi vanno sempre bene, anche quadrate o orizzontali se abbastanza grandi (vengono ritagliate).');
+}
+function unreadableMsg(file){
+  const n=(file&&file.name)||'';
+  return L('We can\'t open "'+n+'" in this browser. HEIC photos from iPhone, TIFF and RAW files are the usual cause.\n\nPlease export the image as JPG or PNG and upload it again (on iPhone, picking the photo from the Photos gallery converts it automatically).',
+    'Il browser non riesce ad aprire "'+n+'". Di solito succede con le foto HEIC dell\'iPhone, i TIFF e i file RAW.\n\nEsporta l\'immagine in JPG o PNG e caricala di nuovo (su iPhone, scegliendo la foto dalla galleria Foto viene convertita da sola).');
+}
+// Controlla il file prima di aprirlo: true = si può procedere
+function preflight(kind,file){
+  if(!file)return false;
+  started();
+  const mb=file.size/1048576;
+  if(mb>MAX_MB){
+    track('img_heavy',kind+' '+mb.toFixed(1)+'MB '+(file.type||'?'));
+    showModal(L('File too heavy','File troppo pesante'),L('This file is '+mb.toFixed(0)+' MB: phones can freeze while opening it. Please export a JPG under 20 MB and upload it again.','Questo file pesa '+mb.toFixed(0)+' MB: sui telefoni la pagina può bloccarsi. Esporta un JPG sotto i 20 MB e caricalo di nuovo.'));
+    return false;
+  }
+  return true;
+}
+// Dopo il caricamento: dimensioni accettabili? Se no, alert e l'immagine non viene usata
+function acceptImage(kind,i,file){
+  const w=i.naturalWidth||i.width,h=i.naturalHeight||i.height;
+  const v=sizeVerdict(kind,w,h);
+  const info=kind+' '+w+'x'+h+' '+((file&&file.type)||'?')+' '+(file?(file.size/1048576).toFixed(1)+'MB':'');
+  if(!v.ok){
+    track('img_too_small',info);
+    if(kind==='avatar')showModal(L('Photo too small','Foto troppo piccola'),L('This image is '+w+' × '+h+' px. For the photo / avatar we need at least 400 × 400 px: please upload a larger one.','Questa immagine è '+w+' × '+h+' px. Per la foto / avatar servono almeno 400 × 400 px: caricane una più grande.'));
+    else showModal(L('Image too small','Immagine troppo piccola'),tooSmallMsg(kind,w,h));
+    return false;
+  }
+  track('img_ok',info);
+  if(v.crop)note(kind,'info',L('ℹ Your image will be cropped to the '+(kind==='cover'?'vertical cover format':'square format')+': drag it to choose the part to show.','ℹ L\'immagine verrà ritagliata nel formato '+(kind==='cover'?'verticale della copertina':'quadrato')+': trascinala per scegliere la parte da mostrare.'));
+  else if(v.low)note(kind,'info',L('✓ '+w+' × '+h+' px: slightly below the ideal size, but the proportions are right. It works!','✓ '+w+' × '+h+' px: un po\' sotto la misura ideale, ma le proporzioni sono giuste. Va bene!'));
+  else note(kind,'','');
+  return true;
+}
+// Alla conferma della posizione: l'utente ha ingrandito troppo l'opera?
+function zoomCheck(kind,drawnW,natW){
+  const f=drawnW/natW;
+  if(f>1.6){
+    track('zoom_blocked',kind+' x'+f.toFixed(2));
+    showModal(L('Zoomed in too much','Ingrandita troppo'),L('At this scale the artwork would look blurry on the '+REQ[kind].name+'. Reduce the scale with the slider (or upload a larger file), then confirm again.','A questa scala l\'opera risulterebbe sfocata sulla '+REQ[kind].name+'. Riduci la scala con lo slider (oppure carica un file più grande) e conferma di nuovo.'),L('OK, I\'ll adjust it','Ok, la sistemo'));
+    return false;
+  }
+  if(f>1.35)note(kind,'warn',L('⚠ Slightly enlarged: it works, but a bigger file would look sharper.','⚠ Leggermente ingrandita: va bene, ma con un file più grande sarebbe più nitida.'));
+  return true;
+}
+// Apertura file (immagine o PDF) → Image, con gestione degli errori
+function openFile(kind,file,scale,cb){
+  if(!preflight(kind,file))return;
+  const isPdf=file.type==='application/pdf'||/\.pdf$/i.test(file.name||'');
+  const fail=(why)=>{track('img_error',kind+' '+(file.type||'?')+' '+(file.name||'').split('.').pop()+' '+why);showModal(L('Can\'t open this file','Non riesco ad aprire questo file'),isPdf?L('This PDF could not be read. Please export the artwork as JPG or PNG and upload it again.','Questo PDF non si legge. Esporta l\'opera in JPG o PNG e caricala di nuovo.'):unreadableMsg(file));};
+  if(isPdf){
+    const fr=new FileReader();
+    fr.onerror=()=>fail('read');
+    fr.onload=e=>{
+      const run=()=>{
+        try{
+          pdfjsLib.GlobalWorkerOptions.workerSrc=PDFJS+'pdf.worker.min.js';
+          pdfjsLib.getDocument({data:new Uint8Array(e.target.result)}).promise.then(p=>p.getPage(1)).then(page=>{
+            const vp=page.getViewport({scale:scale});
+            const oc=document.createElement('canvas');oc.width=vp.width;oc.height=vp.height;
+            return page.render({canvasContext:oc.getContext('2d'),viewport:vp}).promise.then(()=>{
+              const i=new Image();i.onload=()=>{if(acceptImage(kind,i,file))cb(i);};i.onerror=()=>fail('pdfimg');i.src=oc.toDataURL();
+            });
+          }).catch(()=>fail('pdf'));
+        }catch(err){fail('pdfjs');}
+      };
+      if(window.pdfjsLib)run();
+      else{const s=document.createElement('script');s.src=PDFJS+'pdf.min.js';s.onload=run;s.onerror=()=>fail('pdfjs_load');document.head.appendChild(s);}
+    };
+    fr.readAsArrayBuffer(file);
+    return;
+  }
+  const url=URL.createObjectURL(file);
+  const i=new Image();
+  i.onload=()=>{URL.revokeObjectURL(url);if(!(i.naturalWidth>0))return fail('empty');if(acceptImage(kind,i,file))cb(i);};
+  i.onerror=()=>{URL.revokeObjectURL(url);fail('decode');};
+  i.src=url;
+}
+
+// ── Cover: drag & drop ──────────────────────────────────────────
+dropOverlay.addEventListener('click',()=>fileIn.click());
+coverOuter.addEventListener('dragenter',e=>{e.preventDefault();canvas.classList.add('drag-hover');if(!imageLoaded)dropOverlay.classList.add('drag-hover-ov');});
+coverOuter.addEventListener('dragover',e=>{e.preventDefault();canvas.classList.add('drag-hover');if(!imageLoaded)dropOverlay.classList.add('drag-hover-ov');});
+coverOuter.addEventListener('dragleave',e=>{if(!coverOuter.contains(e.relatedTarget)){canvas.classList.remove('drag-hover');dropOverlay.classList.remove('drag-hover-ov');}});
+coverOuter.addEventListener('drop',e=>{e.preventDefault();canvas.classList.remove('drag-hover');dropOverlay.classList.remove('drag-hover-ov');loadFile(e.dataTransfer.files[0]);});
+fileIn.addEventListener('change',e=>{loadFile(e.target.files[0]);fileIn.value='';});
+
+let coverOrigFilename='image.jpg',terzaOrigFilename='image.jpg';
+function loadFile(file){
+  if(!file)return;
+  coverOrigFilename=file.name;
+  openFile('cover',file,3,setupImg);
+}
+function setupImg(i){
+  img=i;imageLoaded=true;
+  const s=Math.max(PW/i.naturalWidth,PH/i.naturalHeight);
+  imgW=i.naturalWidth*s;imgH=i.naturalHeight*s;
+  imgX=(PW-imgW)/2;imgY=(PH-imgH)/2;
+  coverScalePrev=100;document.getElementById('coverScale').value=100;document.getElementById('coverScaleVal').textContent='100%';
+  spineHex=accentFromImageSource(i,0,0,i.naturalWidth,i.naturalHeight);
+  precheck('cover',i);
+  locked=false;canvas.classList.remove('locked');
+  dropOverlay.style.display='none';
+  document.getElementById('ctrlPosition').style.display='flex';
+  document.getElementById('coverScaleRow').style.display='flex';
+  document.getElementById('ctrlLocked').style.display='none';
+  document.getElementById('posHint').style.display='block';
+  drawCover();updateSubmit();
+}
+
+// ── Cover: trascinamento e zoom ─────────────────────────────────
+canvas.addEventListener('mousedown',e=>{
+  if(locked||!img)return;
+  e.preventDefault();
+  const r=canvas.getBoundingClientRect();
+  dragging=true;dsx=e.clientX-r.left-imgX;dsy=e.clientY-r.top-imgY;
+});
+document.addEventListener('mousemove',e=>{
+  if(!dragging)return;
+  const r=canvas.getBoundingClientRect();imgX=e.clientX-r.left-dsx;imgY=e.clientY-r.top-dsy;drawCover();
+});
+document.addEventListener('mouseup',()=>{dragging=false;});
+let td=0;
+canvas.addEventListener('touchstart',e=>{
+  if(locked||!img)return;
+  if(e.touches.length===1){dragging=true;const r=canvas.getBoundingClientRect();dsx=e.touches[0].clientX-r.left-imgX;dsy=e.touches[0].clientY-r.top-imgY;}
+  else if(e.touches.length===2)td=Math.hypot(e.touches[0].clientX-e.touches[1].clientX,e.touches[0].clientY-e.touches[1].clientY);
+  e.preventDefault();
+},{passive:false});
+canvas.addEventListener('touchmove',e=>{
+  if(locked||!img)return;const r=canvas.getBoundingClientRect();
+  if(e.touches.length===1&&dragging){imgX=e.touches[0].clientX-r.left-dsx;imgY=e.touches[0].clientY-r.top-dsy;drawCover();}
+  else if(e.touches.length===2){
+    const nd=Math.hypot(e.touches[0].clientX-e.touches[1].clientX,e.touches[0].clientY-e.touches[1].clientY);
+    const mx=(e.touches[0].clientX+e.touches[1].clientX)/2-r.left,my=(e.touches[0].clientY+e.touches[1].clientY)/2-r.top;
+    const f=nd/td;imgX=mx-(mx-imgX)*f;imgY=my-(my-imgY)*f;imgW*=f;imgH*=f;td=nd;drawCover();
+  }
+  e.preventDefault();
+},{passive:false});
+canvas.addEventListener('touchend',()=>dragging=false);
+
+let coverScalePrev=100;
+document.getElementById('coverScale').addEventListener('input',function(){
+  if(!img||locked)return;
+  const val=+this.value,f=val/coverScalePrev;
+  const cx=PW/2,cy=PH/2;
+  imgX=cx-(cx-imgX)*f;imgY=cy-(cy-imgY)*f;imgW*=f;imgH*=f;
+  coverScalePrev=val;
+  document.getElementById('coverScaleVal').textContent=val+'%';
+  drawCover();
+});
+document.getElementById('btnConfirm').addEventListener('click',()=>{
+  if(img&&!zoomCheck('cover',imgW*(FULL_W/PW),img.naturalWidth))return;
+  locked=true;canvas.classList.add('locked');
+  document.getElementById('ctrlPosition').style.display='none';
+  document.getElementById('coverScaleRow').style.display='none';
+  document.getElementById('ctrlLocked').style.display='flex';
+  document.getElementById('posHint').style.display='none';
+  updateSubmit();
+});
+document.getElementById('btnEdit').addEventListener('click',()=>{
+  locked=false;canvas.classList.remove('locked');
+  document.getElementById('ctrlLocked').style.display='none';
+  document.getElementById('ctrlPosition').style.display='flex';
+  document.getElementById('coverScaleRow').style.display='flex';
+  document.getElementById('posHint').style.display='block';
+  updateSubmit();
+});
+const changeFn=()=>{
+  img=null;imageLoaded=false;locked=false;imgX=0;imgY=0;spineHex='#E8189A';setMod('cover','none');note('cover','','');
+  fileIn.value='';
+  dropOverlay.style.display='flex';
+  document.getElementById('ctrlPosition').style.display='none';
+  document.getElementById('coverScaleRow').style.display='none';
+  document.getElementById('ctrlLocked').style.display='none';
+  document.getElementById('posHint').style.display='none';
+  canvas.classList.remove('locked');
+  drawCover();updateSubmit();
+};
+document.getElementById('btnChange').addEventListener('click',changeFn);
+document.getElementById('btnChange2').addEventListener('click',changeFn);
+
+function setupCounter(tid,cid,max){
+  const t=document.getElementById(tid),c=document.getElementById(cid);
+  t.addEventListener('input',()=>{
+    const len=t.value.length;c.textContent=len+' / '+max;
+    if(len>max){c.classList.add('over');t.classList.add('err');}else{c.classList.remove('over');t.classList.remove('err');}
+    updateSubmit();
+  });
+}
+setupCounter('fBio','cBio',520);
+setupCounter('fDesc','cDesc',660);
+['fName','fInsta','fArtName','fBio','fDesc','fEmail'].forEach(id=>document.getElementById(id).addEventListener('input',()=>{started();updateSubmit();}));
+
+function updateTerzaPreview(){
+  document.getElementById('tTitlePreview').textContent=document.getElementById('fArtName').value.trim()||'Artwork Title';
+  document.getElementById('tDescPreview').textContent=document.getElementById('fDesc').value.trim()||'Short Artwork Description';
+}
+['fArtName','fDesc'].forEach(id=>document.getElementById(id).addEventListener('input',updateTerzaPreview));
+
+function missingList(){
+  const m=[];
+  const n=document.getElementById('fName').value.trim(),b=document.getElementById('fBio').value,ig=document.getElementById('fInsta').value.trim();
+  const an=document.getElementById('fArtName').value.trim(),d=document.getElementById('fDesc').value,em=document.getElementById('fEmail').value.trim();
+  if(!(window.avReady&&window.avReady()))m.push(L('Photo / Avatar (upload and confirm)','Foto / avatar (carica e conferma)'));
+  if(!n)m.push(L('Name / Nickname','Nome'));
+  if(!emailOk(em))m.push(L('Email','Email'));
+  if(!b||b.length>520)m.push(b.length>520?L('Bio (max 520 characters)','Bio (max 520 caratteri)'):'Bio');
+  if(!igOk(ig))m.push(L('Instagram (@username)','Instagram (@nomeutente)'));
+  if(!an)m.push(L('Artwork Name','Titolo dell\'opera'));
+  if(!d||d.length>660)m.push(d.length>660?L('Description (max 660 characters)','Descrizione (max 660 caratteri)'):L('Artwork Description','Descrizione dell\'opera'));
+  if(!img||!locked)m.push(L('Cover Image (upload and confirm the position)','Copertina (carica e conferma la posizione)'));
+  if(!tImg||!tLocked)m.push(L('Third Page Image (upload and confirm the position)','Terza pagina (carica e conferma la posizione)'));
+  const ms=window.modState||{};
+  ['avatar','cover','terza'].forEach(k=>{if(ms[k]==='bad')m.push(MOD_LABEL[k]+L(': choose another image',': scegli un\'altra immagine'));if(ms[k]==='checking')m.push(MOD_LABEL[k]+L(': check in progress, wait a few seconds',': controllo in corso, attendi qualche secondo'));});
+  if(!document.getElementById('fConsent').checked)m.push(L('Confirmation checkbox','Casella di conferma'));
+  return m;
+}
+function isValid(){return missingList().length===0;}
+function updateSubmit(){
+  const ok=isValid();
+  document.getElementById('btnSubmit').classList.toggle('disabled',!ok);
+  const b=document.getElementById('errBanner');
+  if(b.dataset.kind==='missing'){if(ok){b.style.display='none';b.dataset.kind='';}else b.innerHTML=L('Please complete: ','Completa: ')+missingList().join(' · ');}
+}
+document.getElementById('btnSubmit').addEventListener('click',function(e){
+  if(!this.classList.contains('disabled'))return;
+  e.preventDefault();
+  const missing=missingList();
+  const bio=document.getElementById('fBio'),desc=document.getElementById('fDesc');
+  if(bio.value.length>520){bio.classList.add('err');document.getElementById('cBio').classList.add('over');}
+  if(desc.value.length>660){desc.classList.add('err');document.getElementById('cDesc').classList.add('over');}
+  if(missing.length){
+    const banner=document.getElementById('errBanner');
+    banner.className='err-banner';banner.dataset.kind='missing';
+    banner.innerHTML=L('Please complete: ','Completa: ')+missing.join(' · ');
+    banner.style.display='block';
+    track('submit_blocked',missing.join(' | '));
+  }
+});
+['fName','fInsta','fArtName','fBio','fDesc'].forEach(id=>document.getElementById(id).addEventListener('input',function(){this.classList.remove('err');}));
+
+// ── TERZA PAGINA ──────────────────────────────────────────────
+const TERZA_FULL_W=1015,TERZA_FULL_H=1015,TPW=288,TPH=288;
+const terzaCanvas=document.getElementById('terzaCanvas');
+const tctx=terzaCanvas.getContext('2d');
+const terzaOuter=document.getElementById('terzaOuter');
+const tDropOverlay=document.getElementById('tDropOverlay');
+const tFileIn=document.getElementById('tFileIn');
+let tImg=null,tImgX=0,tImgY=0,tImgW=TPW,tImgH=TPH;
+let tDragging=false,tDsx=0,tDsy=0;
+let tLocked=false,tImageLoaded=false;
+
+function drawTerza(){
+  tctx.clearRect(0,0,TPW,TPH);
+  tctx.fillStyle='#FFFFFF';tctx.fillRect(0,0,TPW,TPH);
+  if(tImg){tctx.save();tctx.beginPath();tctx.rect(0,0,TPW,TPH);tctx.clip();tctx.drawImage(tImg,tImgX,tImgY,tImgW,tImgH);tctx.restore();}
+}
+drawTerza();
+function fitTerza(i){
+  const ar=i.naturalWidth/i.naturalHeight;
+  if(ar>1){tImgH=TPH;tImgW=TPH*ar;}else{tImgW=TPW;tImgH=TPW/ar;}
+  tImgX=(TPW-tImgW)/2;tImgY=(TPH-tImgH)/2;
+}
+function loadTerzaFile(file){
+  if(!file)return;
+  terzaOrigFilename=file.name;
+  openFile('terza',file,2,i=>{tImg=i;fitTerza(i);tImageLoaded=true;activateTerza();});
+}
+function activateTerza(){
+  tDropOverlay.classList.remove('active');
+  tDropOverlay.style.display='none';
+  terzaScalePrev=100;document.getElementById('terzaScale').value=100;document.getElementById('terzaScaleVal').textContent='100%';
+  document.getElementById('tCtrlPosition').style.display='flex';
+  document.getElementById('terzaScaleRow').style.display='flex';
+  document.getElementById('tCtrlLocked').style.display='none';
+  document.getElementById('tPosHint').style.display='block';
+  tLocked=false;terzaCanvas.classList.remove('locked');
+  drawTerza();updateSubmit();
+  precheck('terza',tImg);
+}
+// un solo gestore del clic (prima overlay e riquadro aprivano il selettore due volte)
+terzaOuter.addEventListener('click',()=>{if(!tImageLoaded)tFileIn.click();});
+tFileIn.addEventListener('change',e=>{if(e.target.files[0])loadTerzaFile(e.target.files[0]);tFileIn.value='';});
+terzaOuter.addEventListener('dragenter',e=>{e.preventDefault();terzaCanvas.classList.add('drag-hover');if(!tImageLoaded)tDropOverlay.classList.add('drag-hover-ov');});
+terzaOuter.addEventListener('dragover',e=>{e.preventDefault();terzaCanvas.classList.add('drag-hover');if(!tImageLoaded)tDropOverlay.classList.add('drag-hover-ov');});
+terzaOuter.addEventListener('dragleave',e=>{if(!terzaOuter.contains(e.relatedTarget)){tDropOverlay.classList.remove('drag-hover-ov');terzaCanvas.classList.remove('drag-hover');}});
+terzaOuter.addEventListener('drop',e=>{e.preventDefault();tDropOverlay.classList.remove('drag-hover-ov');terzaCanvas.classList.remove('drag-hover');if(e.dataTransfer.files[0])loadTerzaFile(e.dataTransfer.files[0]);});
+
+terzaCanvas.addEventListener('mousedown',e=>{
+  if(!tImageLoaded||tLocked)return;
+  e.preventDefault();
+  const r=terzaCanvas.getBoundingClientRect();
+  tDragging=true;tDsx=e.clientX-r.left-tImgX;tDsy=e.clientY-r.top-tImgY;
+});
+window.addEventListener('mousemove',e=>{if(!tDragging)return;const r=terzaCanvas.getBoundingClientRect();tImgX=e.clientX-r.left-tDsx;tImgY=e.clientY-r.top-tDsy;drawTerza();});
+window.addEventListener('mouseup',()=>{tDragging=false;});
+terzaCanvas.addEventListener('touchstart',e=>{if(!tImageLoaded||tLocked)return;const r=terzaCanvas.getBoundingClientRect(),t=e.touches[0];tDragging=true;tDsx=t.clientX-r.left-tImgX;tDsy=t.clientY-r.top-tImgY;e.preventDefault();},{passive:false});
+terzaCanvas.addEventListener('touchmove',e=>{if(!tDragging||tLocked)return;const r=terzaCanvas.getBoundingClientRect(),t=e.touches[0];tImgX=t.clientX-r.left-tDsx;tImgY=t.clientY-r.top-tDsy;drawTerza();e.preventDefault();},{passive:false});
+terzaCanvas.addEventListener('touchend',()=>{tDragging=false;});
+
+let terzaScalePrev=100;
+document.getElementById('terzaScale').addEventListener('input',function(){
+  if(!tImg||tLocked)return;
+  const val=+this.value,f=val/terzaScalePrev;
+  const cx=TPW/2,cy=TPH/2;
+  tImgX=cx-(cx-tImgX)*f;tImgY=cy-(cy-tImgY)*f;tImgW*=f;tImgH*=f;
+  terzaScalePrev=val;
+  document.getElementById('terzaScaleVal').textContent=val+'%';
+  drawTerza();
+});
+document.getElementById('tBtnConfirm').addEventListener('click',()=>{
+  if(tImg&&!zoomCheck('terza',tImgW*(TERZA_FULL_W/TPW),tImg.naturalWidth))return;
+  tLocked=true;terzaCanvas.classList.add('locked');
+  document.getElementById('tCtrlPosition').style.display='none';
+  document.getElementById('terzaScaleRow').style.display='none';
+  document.getElementById('tCtrlLocked').style.display='flex';
+  document.getElementById('tPosHint').style.display='none';
+  updateSubmit();
+});
+document.getElementById('tBtnEdit').addEventListener('click',()=>{
+  document.getElementById('terzaScaleRow').style.display='flex';
+  tLocked=false;terzaCanvas.classList.remove('locked');
+  document.getElementById('tCtrlLocked').style.display='none';
+  document.getElementById('tCtrlPosition').style.display='flex';
+  document.getElementById('tPosHint').style.display='block';
+  updateSubmit();
+});
+[document.getElementById('tBtnChange'),document.getElementById('tBtnChange2')].forEach(btn=>{
+  btn.addEventListener('click',e=>{
+    e.stopPropagation();
+    tImg=null;tImageLoaded=false;tLocked=false;setMod('terza','none');note('terza','','');
+    terzaCanvas.classList.remove('locked');
+    document.getElementById('tCtrlPosition').style.display='none';
+    document.getElementById('terzaScaleRow').style.display='none';
+    document.getElementById('tCtrlLocked').style.display='none';
+    document.getElementById('tPosHint').style.display='none';
+    tDropOverlay.classList.add('active');tDropOverlay.style.display='flex';
+    tFileIn.value='';
+    drawTerza();updateSubmit();
+  });
+});
+
+// ── COVERS GALLERY (file webp leggeri, caricati solo quando servono) ──
+(function(){
+  var imgs=['c0127','c0126','c0125','c0124','c0103','c0089','c0064','c0050','c0037','c0034','c0031','c0027','c0023'];
+  var all=imgs.concat(imgs);
+  var track_=document.getElementById('coversTrack');
+  if(!track_)return;
+  all.forEach(function(n){
+    var im=document.createElement('img');
+    im.src=n+'.webp';im.loading='lazy';im.decoding='async';im.width=180;im.height=240;im.alt='The Non Placer cover';
+    im.draggable=false;im.ondragstart=function(){return false;};
+    track_.appendChild(im);
+  });
+  var wrap=track_.parentElement;
+  var isDragging=false,dragStartX=0,dragBaseX=0,curX=0,vel=0,lastDragX=0,rafId=null,ANIM=70;
+  function getCurrentX(){var st=getComputedStyle(track_);var mat=st.transform;if(!mat||mat==='none')return 0;var m=mat.match(/matrix.*\((.+)\)/);return m?parseFloat(m[1].split(',')[4]):0;}
+  function resumeAnim(fromX){var half=track_.scrollWidth/2;if(!half)return;var wrapped=((fromX%(-half))-(-half))%(-half);if(wrapped>0)wrapped-=half;var pct=Math.abs(wrapped)/half;track_.style.transform='';track_.style.animation='coverScroll '+ANIM+'s linear infinite';track_.style.animationDelay=-(ANIM*pct)+'s';}
+  function start(x){if(rafId){cancelAnimationFrame(rafId);rafId=null;}isDragging=true;dragBaseX=getCurrentX();track_.style.animation='none';track_.style.transform='translateX('+dragBaseX+'px)';dragStartX=x;lastDragX=x;vel=0;}
+  function move(x){if(!isDragging)return;curX=dragBaseX+(x-dragStartX);track_.style.transform='translateX('+curX+'px)';vel=x-lastDragX;lastDragX=x;}
+  function end(){if(!isDragging)return;isDragging=false;wrap.classList.remove('dragging');var pos=curX;(function mom(){vel*=0.9;pos+=vel;track_.style.transform='translateX('+pos+'px)';if(Math.abs(vel)>0.5)rafId=requestAnimationFrame(mom);else{rafId=null;resumeAnim(pos);}})();}
+  wrap.addEventListener('mousedown',function(e){start(e.clientX);wrap.classList.add('dragging');e.preventDefault();});
+  document.addEventListener('mousemove',function(e){move(e.clientX);});
+  document.addEventListener('mouseup',end);
+  wrap.addEventListener('touchstart',function(e){start(e.touches[0].clientX);},{passive:true});
+  wrap.addEventListener('touchmove',function(e){move(e.touches[0].clientX);},{passive:true});
+  wrap.addEventListener('touchend',end);
+})();
+if(document.fonts&&document.fonts.ready)document.fonts.ready.then(()=>drawCover());
+
+// ── FAQ: apertura al clic e dai link "#faq-…" ──
+function openFaq(id,scroll){
+  const item=document.getElementById(id);if(!item)return;
+  document.querySelectorAll('.faq-item.open').forEach(el=>{if(el!==item)el.classList.remove('open');});
+  item.classList.add('open','hl');setTimeout(()=>item.classList.remove('hl'),2500);
+  if(scroll)item.scrollIntoView({behavior:'smooth',block:'start'});
+}
+document.querySelectorAll('.faq-q').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const item=btn.parentElement,isOpen=item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(el=>el.classList.remove('open'));
+    if(!isOpen){item.classList.add('open');if(item.id)track('faq_open',item.id);}
+  });
+});
+document.querySelectorAll('a[href^="#faq-"]').forEach(a=>a.addEventListener('click',e=>{
+  e.preventDefault();document.getElementById('tnpModal').classList.remove('show');
+  const id=a.getAttribute('href').slice(1);openFaq(id,true);track('faq_link',id);
+}));
+if(/^#faq-/.test(location.hash))setTimeout(()=>openFaq(location.hash.slice(1),true),300);
+
+// ═══════════════ AVATAR ═══════════════
+(function(){
+  const AW=160,AH=160;
+  const avCanvas=document.getElementById('avatarCanvas');
+  const avCtx=avCanvas.getContext('2d');
+  const avOuter=document.getElementById('avatarOuter');
+  const avDropHint=document.getElementById('avDropHint');
+  const avFileIn=document.getElementById('avFileIn');
+  let avImg=null,avX=0,avY=0,avW=AW,avH=AH;
+  let avDragging=false,avDsx=0,avDsy=0;
+  let avLocked=false,avLoaded=false;
+  let avOrigFilename='avatar.jpg';
+
+  function drawAvatar(){
+    avCtx.clearRect(0,0,AW,AH);
+    avCtx.fillStyle='#FF2E93';
+    avCtx.beginPath();avCtx.arc(AW/2,AH/2,AW/2,0,Math.PI*2);avCtx.fill();
+    if(avImg){avCtx.save();avCtx.beginPath();avCtx.arc(AW/2,AH/2,AW/2,0,Math.PI*2);avCtx.clip();avCtx.drawImage(avImg,avX,avY,avW,avH);avCtx.restore();}
+  }
+  drawAvatar();
+  function loadAvFile(file){
+    if(!file)return;
+    avOrigFilename=file.name;
+    openFile('avatar',file,2,setupAv);
+  }
+  function setupAv(i){
+    avImg=i;avLoaded=true;avLocked=false;
+    const s=Math.max(AW/i.naturalWidth,AH/i.naturalHeight);
+    avW=i.naturalWidth*s;avH=i.naturalHeight*s;
+    avX=(AW-avW)/2;avY=(AH-avH)/2;
+    avScalePrev=100;document.getElementById('avScale').value=100;document.getElementById('avScaleVal').textContent='100%';
+    avDropHint.classList.add('hidden');
+    avOuter.classList.add('has-image');
+    document.getElementById('avCtrlPos').style.display='flex';
+    document.getElementById('avScaleRow').style.display='flex';
+    document.getElementById('avCtrlLocked').style.display='none';
+    document.getElementById('avHint').style.display='block';
+    drawAvatar();
+    precheck('avatar',i);
+    document.dispatchEvent(new Event('tnp:avatar'));
+  }
+  avOuter.addEventListener('click',()=>{if(!avLoaded)avFileIn.click();});
+  avFileIn.addEventListener('change',e=>{if(e.target.files[0])loadAvFile(e.target.files[0]);avFileIn.value='';});
+  avOuter.addEventListener('dragenter',e=>{e.preventDefault();avOuter.classList.add('drag-hover');});
+  avOuter.addEventListener('dragover',e=>{e.preventDefault();avOuter.classList.add('drag-hover');});
+  avOuter.addEventListener('dragleave',e=>{if(!avOuter.contains(e.relatedTarget))avOuter.classList.remove('drag-hover');});
+  avOuter.addEventListener('drop',e=>{e.preventDefault();avOuter.classList.remove('drag-hover');if(e.dataTransfer.files[0])loadAvFile(e.dataTransfer.files[0]);});
+
+  avCanvas.addEventListener('mousedown',e=>{
+    if(!avLoaded||avLocked)return;
+    e.preventDefault();
+    const r=avCanvas.getBoundingClientRect();
+    avDragging=true;avDsx=e.clientX-r.left-avX;avDsy=e.clientY-r.top-avY;
+  });
+  document.addEventListener('mousemove',e=>{if(!avDragging)return;const r=avCanvas.getBoundingClientRect();avX=e.clientX-r.left-avDsx;avY=e.clientY-r.top-avDsy;drawAvatar();});
+  document.addEventListener('mouseup',()=>{avDragging=false;});
+  let avTd=0;
+  avCanvas.addEventListener('touchstart',e=>{
+    if(!avLoaded||avLocked)return;
+    if(e.touches.length===1){avDragging=true;const r=avCanvas.getBoundingClientRect();avDsx=e.touches[0].clientX-r.left-avX;avDsy=e.touches[0].clientY-r.top-avY;}
+    else if(e.touches.length===2)avTd=Math.hypot(e.touches[0].clientX-e.touches[1].clientX,e.touches[0].clientY-e.touches[1].clientY);
+    e.preventDefault();
+  },{passive:false});
+  avCanvas.addEventListener('touchmove',e=>{
+    if(!avLoaded||avLocked)return;const r=avCanvas.getBoundingClientRect();
+    if(e.touches.length===1&&avDragging){avX=e.touches[0].clientX-r.left-avDsx;avY=e.touches[0].clientY-r.top-avDsy;drawAvatar();}
+    else if(e.touches.length===2){
+      const nd=Math.hypot(e.touches[0].clientX-e.touches[1].clientX,e.touches[0].clientY-e.touches[1].clientY);
+      const mx=(e.touches[0].clientX+e.touches[1].clientX)/2-r.left,my=(e.touches[0].clientY+e.touches[1].clientY)/2-r.top;
+      const f=nd/avTd;avX=mx-(mx-avX)*f;avY=my-(my-avY)*f;avW*=f;avH*=f;avTd=nd;drawAvatar();
+    }
+    e.preventDefault();
+  },{passive:false});
+  avCanvas.addEventListener('touchend',()=>{avDragging=false;});
+
+  let avScalePrev=100;
+  document.getElementById('avScale').addEventListener('input',function(){
+    if(!avImg||avLocked)return;
+    const val=+this.value,f=val/avScalePrev;
+    const cx=AW/2,cy=AH/2;
+    avX=cx-(cx-avX)*f;avY=cy-(cy-avY)*f;avW*=f;avH*=f;
+    avScalePrev=val;
+    document.getElementById('avScaleVal').textContent=val+'%';
+    drawAvatar();
+  });
+  document.getElementById('avBtnConfirm').addEventListener('click',()=>{
+    avLocked=true;avOuter.classList.remove('has-image');
+    document.getElementById('avCtrlPos').style.display='none';
+    document.getElementById('avScaleRow').style.display='none';
+    document.getElementById('avCtrlLocked').style.display='flex';
+    document.getElementById('avHint').style.display='none';
+    document.dispatchEvent(new Event('tnp:avatar'));
+  });
+  document.getElementById('avBtnEdit').addEventListener('click',()=>{
+    avLocked=false;avOuter.classList.add('has-image');
+    document.getElementById('avCtrlLocked').style.display='none';
+    document.getElementById('avCtrlPos').style.display='flex';
+    document.getElementById('avScaleRow').style.display='flex';
+    document.getElementById('avHint').style.display='block';
+    document.dispatchEvent(new Event('tnp:avatar'));
+  });
+  const avChangeFn=e=>{
+    if(e)e.stopPropagation();
+    avImg=null;avLoaded=false;avLocked=false;avX=0;avY=0;avW=AW;avH=AH;
+    avScalePrev=100;document.getElementById('avScale').value=100;document.getElementById('avScaleVal').textContent='100%';
+    avFileIn.value='';
+    document.getElementById('avScaleRow').style.display='none';
+    avDropHint.classList.remove('hidden');
+    avOuter.classList.remove('has-image');
+    document.getElementById('avCtrlPos').style.display='none';
+    document.getElementById('avCtrlLocked').style.display='none';
+    document.getElementById('avHint').style.display='none';
+    drawAvatar();setMod('avatar','none');note('avatar','','');
+    document.dispatchEvent(new Event('tnp:avatar'));
+  };
+  document.getElementById('avBtnChange').addEventListener('click',avChangeFn);
+  document.getElementById('avBtnChange2').addEventListener('click',avChangeFn);
+
+  window.exportAvatar=function(cb){
+    if(!avImg){cb(null);return;}
+    const S=1200,k=S/AW;
+    const ec=document.createElement('canvas');ec.width=S;ec.height=S;
+    const c=ec.getContext('2d');
+    c.fillStyle='#FFFFFF';c.fillRect(0,0,S,S);
+    c.drawImage(avImg,avX*k,avY*k,avW*k,avH*k);
+    ec.toBlob(b=>cb(b),'image/jpeg',0.92);
+  };
+  window.avReady=()=>avLoaded&&avLocked;
+  window.avOrigFilenameRef=()=>avOrigFilename;
+})();
+
+// ═══════════════ INVIO AL SISTEMA (v3) ═══════════════
+var modState={avatar:'none',cover:'none',terza:'none'};
+var modSeq={avatar:0,cover:0,terza:0};
+const MOD_LABEL={avatar:L('Photo / avatar','Foto / avatar'),cover:L('Cover image','Copertina'),terza:L('Third page image','Terza pagina')};
+
+function showModal(title,text,btn){
+  document.getElementById('tnpModalTitle').textContent=title;
+  document.getElementById('tnpModalText').textContent=text;
+  document.getElementById('tnpModalClose').textContent=btn||L('Choose another image','Scegli un\'altra immagine');
+  document.getElementById('tnpModalFaq').textContent=L('Read the FAQ','Leggi le FAQ');
+  document.getElementById('tnpModal').classList.add('show');
+}
+document.getElementById('tnpModalClose').addEventListener('click',()=>document.getElementById('tnpModal').classList.remove('show'));
+document.getElementById('tnpModal').addEventListener('click',e=>{if(e.target.id==='tnpModal')e.currentTarget.classList.remove('show');});
+
+function setMod(kind,state,msg){
+  modState[kind]=state;
+  const el=document.getElementById('mod'+kind.charAt(0).toUpperCase()+kind.slice(1));
+  if(el){el.className='mod-status show '+state;el.textContent=msg||'';if(state==='none')el.className='mod-status';}
+  updateSubmit();
+}
+function smallDataUrl(image,max){
+  max=max||768;
+  const w=image.naturalWidth||image.width,h=image.naturalHeight||image.height;
+  const s=Math.min(1,max/Math.max(w,h));
+  const c=document.createElement('canvas');c.width=Math.max(1,Math.round(w*s));c.height=Math.max(1,Math.round(h*s));
+  const x=c.getContext('2d');x.fillStyle='#fff';x.fillRect(0,0,c.width,c.height);x.drawImage(image,0,0,c.width,c.height);
+  return c.toDataURL('image/jpeg',0.85);
+}
+async function precheck(kind,image){
+  if(!image)return;
+  const seq=++modSeq[kind];
+  setMod(kind,'checking',L('Checking image…','Controllo dell\'immagine…'));
+  try{
+    const res=await fetch(API_URL,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},
+      body:JSON.stringify({action:'precheck',kind:kind,image:smallDataUrl(image)}),
+      signal:(window.AbortSignal&&AbortSignal.timeout)?AbortSignal.timeout(25000):undefined}); // se tarda non blocca: la verifica completa avviene all'invio
+    const j=await res.json();
+    if(seq!==modSeq[kind])return;
+    if(j.ok&&j.allowed===false){
+      const reason=IS_IT?(j.reason_it||j.reason_en):(j.reason_en||j.reason_it);
+      setMod(kind,'bad',L('✕ This image cannot be published — please choose another one','✕ Questa immagine non si può pubblicare — scegline un\'altra'));
+      track('precheck_bad',kind+' '+(j.category||''));
+      showModal(L('Image not allowed','Immagine non ammessa'),reason||L('This image does not meet Instagram content rules (no nudity, hate, violence or violent political content). Please choose another artwork.','Questa immagine non rispetta le regole di Instagram (niente nudo, odio, violenza o politica violenta). Scegli un\'altra opera.'));
+    }else setMod(kind,'ok',L('✓ Image OK','✓ Immagine ok'));
+  }catch(err){if(seq===modSeq[kind])setMod(kind,'ok','');}
+}
+
+// colore d'accento: il colore più "saliente" della copertina, leggibile sotto il titolo
+function srgb2lin(c){c/=255;return c<=0.04045?c/12.92:Math.pow((c+0.055)/1.055,2.4);}
+function rgb2lab(r,g,b){
+  const R=srgb2lin(r),G=srgb2lin(g),B=srgb2lin(b);
+  let X=(R*0.4124+G*0.3576+B*0.1805)/0.95047,Y=(R*0.2126+G*0.7152+B*0.0722),Z=(R*0.0193+G*0.1192+B*0.9505)/1.08883;
+  const f=t=>t>0.008856?Math.cbrt(t):(7.787*t+16/116);
+  X=f(X);Y=f(Y);Z=f(Z);
+  return[116*Y-16,500*(X-Y),200*(Y-Z)];
+}
+function lab2rgb(L_,a,b){
+  let Y=(L_+16)/116,X=a/500+Y,Z=Y-b/200;
+  const f=t=>{const t3=t*t*t;return t3>0.008856?t3:(t-16/116)/7.787;};
+  X=f(X)*0.95047;Y=f(Y);Z=f(Z)*1.08883;
+  let r=X*3.2406+Y*-1.5372+Z*-0.4986,g=X*-0.9689+Y*1.8758+Z*0.0415,bb=X*0.0557+Y*-0.2040+Z*1.0570;
+  const gm=c=>{c=c<=0.0031308?12.92*c:1.055*Math.pow(c,1/2.4)-0.055;return Math.max(0,Math.min(255,Math.round(c*255)));};
+  return[gm(r),gm(g),gm(bb)];
+}
+function accentFromImageSource(src,sx,sy,sw,sh){
+  const W=90,H=Math.max(1,Math.round(90*(sh/sw)));
+  const c=document.createElement('canvas');c.width=W;c.height=H;
+  const x=c.getContext('2d',{willReadFrequently:true});
+  x.drawImage(src,sx,sy,sw,sh,0,0,W,H);
+  const d=x.getImageData(0,0,W,H).data;
+  const P=[];const t=[0,0,0];let tn=0;
+  for(let i=0,p=0;i<d.length;i+=4,p++){
+    if(d[i+3]<128)continue;
+    const lab=rgb2lab(d[i],d[i+1],d[i+2]);
+    const C=Math.hypot(lab[1],lab[2]);
+    const hue=(Math.atan2(lab[2],lab[1])*180/Math.PI+360)%360;
+    P.push([lab[0],lab[1],lab[2],C,hue]);
+    if(Math.floor(p/W)<H*0.28){t[0]+=lab[0];t[1]+=lab[1];t[2]+=lab[2];tn++;}
+  }
+  if(!P.length)return'#BA362C';
+  if(tn){t[0]/=tn;t[1]/=tn;t[2]/=tn;}
+  const n=P.length;let best=null,bs=-1;
+  for(let h0=0;h0<360;h0+=15){
+    const sel=P.filter(q=>q[3]>14&&q[0]>18&&q[0]<92&&((q[4]-h0+360)%360)<30);
+    if(sel.length<n*0.003)continue;
+    sel.sort((a,b)=>b[3]-a[3]);
+    const top=sel.slice(0,Math.max(1,Math.ceil(sel.length*0.4)));
+    let LL=0,A=0,B=0;top.forEach(q=>{LL+=q[0];A+=q[1];B+=q[2];});LL/=top.length;A/=top.length;B/=top.length;
+    const Cm=Math.hypot(A,B),p=sel.length/n;
+    const dE=Math.hypot(LL-t[0],A-t[1],B-t[2]);
+    const lw=(LL>=35&&LL<=80)?1:0.5;
+    const warm=(h0+15>=20&&h0+15<=100)?1.25:1;
+    const score=Math.pow(p,0.3)*Math.pow(Cm,1.8)*Math.pow(Math.min(dE,60)/60,1.2)*lw*warm;
+    if(score>bs){bs=score;best=[LL,A,B];}
+  }
+  if(!best)return t[0]<50?'#D7D8C5':'#1F2122';
+  const rgb=lab2rgb(best[0],best[1],best[2]);
+  const hsl=rgb2hsl(rgb[0],rgb[1],rgb[2]);
+  let lo=38,hi=66;
+  if(t[0]<45){lo=58;hi=72;}else if(t[0]>65){lo=32;hi=48;}
+  hsl.l=Math.max(lo,Math.min(hi,hsl.l));
+  if(hsl.s>15)hsl.s=Math.max(30,Math.min(80,hsl.s));
+  return hsl2hex(hsl.h,hsl.s,hsl.l).toUpperCase();
+}
+
+// Export copertina 1114×1654: PNG con trasparenza dove l'opera non copre (verrà estesa in Photoshop)
+function exportCoverData(){
+  return new Promise(res=>{
+    if(!img){res(null);return;}
+    const ec=document.createElement('canvas');ec.width=FULL_W;ec.height=FULL_H;
+    const c=ec.getContext('2d'),sc=FULL_W/PW;
+    const covers=imgX<=0.5&&imgY<=0.5&&imgX+imgW>=PW-0.5&&imgY+imgH>=PH-0.5;
+    if(covers){c.fillStyle='#FFFFFF';c.fillRect(0,0,FULL_W,FULL_H);}
+    c.drawImage(img,imgX*sc,imgY*sc,imgW*sc,imgH*sc);
+    const accent=accentFromImageSource(ec,0,0,FULL_W,FULL_H);
+    res({dataUrl:covers?ec.toDataURL('image/jpeg',0.93):ec.toDataURL('image/png'),accent:accent,mime:covers?'image/jpeg':'image/png'});
+  });
+}
+function exportTerzaData(){
+  return new Promise(res=>{
+    if(!tImg){res(null);return;}
+    const ec=document.createElement('canvas');ec.width=TERZA_FULL_W;ec.height=TERZA_FULL_H;
+    const c=ec.getContext('2d'),sc=TERZA_FULL_W/TPW;
+    c.fillStyle='#FFFFFF';c.fillRect(0,0,TERZA_FULL_W,TERZA_FULL_H);
+    c.drawImage(tImg,tImgX*sc,tImgY*sc,tImgW*sc,tImgH*sc);
+    res({dataUrl:ec.toDataURL('image/jpeg',0.93),mime:'image/jpeg'});
+  });
+}
+function emailOk(v){return /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v);}
+function igOk(v){v=String(v||'').trim();const m=v.match(/instagram\.com\/([A-Za-z0-9._]{1,30})/i);if(m)v=m[1];v=v.replace(/^@+/,'').replace(/[\/?#].*$/,'');return /^[A-Za-z0-9._]{1,30}$/.test(v);}
+
+// Ticker e hero: prossimo numero
+(async function(){
+  try{
+    const j=await (await fetch(API_URL+'?action=info')).json();
+    if(!j.ok||!j.nextNumber)return;
+    const lab='N°'+j.nextNumber;
+    document.querySelectorAll('.ticker-item').forEach(el=>{if(/N°\d{4}/.test(el.textContent))el.textContent=lab;});
+    const nn=document.getElementById('nextNo');if(nn)nn.textContent=lab;
+  }catch(e){}
+})();
+
+function failBanner(html){
+  const banner=document.getElementById('errBanner');
+  banner.className='err-banner bad';banner.dataset.kind='fail';banner.innerHTML=html;banner.style.display='block';
+  banner.scrollIntoView({behavior:'smooth',block:'center'});
+}
+const HELP=()=>(IAB_ANDROID?' '+L('Tip: open this page in Chrome and try again. ','Consiglio: apri la pagina in Chrome e riprova. ')+CHROME_LINK():'')+L(' If it keeps failing, send everything to <a href="mailto:thenonplacer@gmail.com" style="color:#fff">thenonplacer@gmail.com</a> or in DM to <a href="https://www.instagram.com/thenonplacer/" target="_blank" style="color:#fff">@thenonplacer</a>.',
+  ' Se continua a non funzionare, manda tutto a <a href="mailto:thenonplacer@gmail.com" style="color:#fff">thenonplacer@gmail.com</a> o in DM a <a href="https://www.instagram.com/thenonplacer/" target="_blank" style="color:#fff">@thenonplacer</a>.');
+
+document.getElementById('subForm').addEventListener('submit',async function(e){
+  e.preventDefault();if(!isValid())return;
+  const btn=document.getElementById('btnSubmit');
+  const banner=document.getElementById('errBanner');
+  banner.style.display='none';banner.dataset.kind='';
+  btn.classList.add('disabled');btn.textContent=L('Preparing…','Preparo…');
+  let stage='prepare';
+  try{
+    const [cov,ter]=await Promise.all([exportCoverData(),exportTerzaData()]);
+    const av=await new Promise(r=>window.exportAvatar(b=>r(b)));
+    const avUrl=await new Promise(r=>{const fr=new FileReader();fr.onload=()=>r(fr.result);fr.readAsDataURL(av);});
+    const email=document.getElementById('fEmail').value.trim();
+    const payload={
+      action:'submit',
+      hp:document.getElementById('fWebsite').value,
+      data:{
+        name:document.getElementById('fName').value.trim(),
+        email:email,
+        instagram:document.getElementById('fInsta').value.trim(),
+        bio:document.getElementById('fBio').value.trim(),
+        artTitle:document.getElementById('fArtName').value.trim(),
+        artDesc:document.getElementById('fDesc').value.trim(),
+        lang:navigator.language||'en',
+        tz:(function(){try{return Intl.DateTimeFormat().resolvedOptions().timeZone||''}catch(_){return ''}})(),
+        accent:cov.accent,
+        consent:document.getElementById('fConsent').checked
+      },
+      files:{
+        avatar:{name:'avatar.jpg',mime:'image/jpeg',b64:avUrl},
+        cover:{name:'cover.'+(cov.mime==='image/png'?'png':'jpg'),mime:cov.mime,b64:cov.dataUrl},
+        terza:{name:'terza.jpg',mime:'image/jpeg',b64:ter.dataUrl}
+      }
+    };
+    const body=JSON.stringify(payload);
+    stage='upload';
+    btn.textContent=L('Uploading & checking…','Invio e controllo…');
+    document.getElementById('submitNote').style.display='block';
+    const send=()=>fetch(API_URL,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:body,
+      signal:(window.AbortSignal&&AbortSignal.timeout)?AbortSignal.timeout(180000):undefined});
+    let res;
+    try{res=await send();}
+    catch(e1){
+      if(!(e1&&e1.name==='TypeError'))throw e1; // solo errori di rete: un timeout non si ripete
+      track('submit_retry',String(e1.message||'').slice(0,80));
+      btn.textContent=L('Connection lost, retrying…','Connessione persa, riprovo…');
+      await new Promise(r=>setTimeout(r,4000));
+      res=await send(); // se è già arrivata, il backend la riconosce come doppione e non ne crea un'altra
+    }
+    stage='response';
+    const j=await res.json();
+    document.getElementById('submitNote').style.display='none';
+    if(j.ok){
+      track('submit_ok',(j.duplicate?'dup ':'')+Math.round(body.length/1024)+'KB');
+      document.getElementById('formWrap').style.display='none';
+      document.getElementById('successSent').innerHTML=L('We\'ve just sent a <b>confirmation email</b> to <b>'+email.replace(/</g,'')+'</b>: it should arrive within a few minutes (check spam and promotions too).',
+        'Ti abbiamo appena mandato una <b>email di conferma</b> a <b>'+email.replace(/</g,'')+'</b>: arriva entro pochi minuti (controlla anche spam e promozioni).');
+      const ss=document.getElementById('successScreen');ss.classList.add('show');
+      ss.scrollIntoView({behavior:'smooth',block:'start'});
+      return;
+    }
+    btn.classList.remove('disabled');btn.textContent='Send Submission';
+    if(j.rejected){
+      track('submit_rejected',(j.category||'')+' '+(j.offending||''));
+      const k={avatar:'avatar',cover:'cover',artwork:'terza'}[j.offending];
+      if(k)setMod(k,'bad',L('✕ This image cannot be published — please choose another one','✕ Questa immagine non si può pubblicare — scegline un\'altra'));
+      showModal(L('Submission not accepted','Candidatura non accettata'),j.reason||L('This submission does not meet Instagram content rules. Please choose another artwork.','Questa candidatura non rispetta le regole di Instagram. Scegli un\'altra opera.'));
+      return;
+    }
+    track('submit_err',(j.error||'?')+' '+(j.fields||[]).join(','));
+    failBanner(j.error==='invalid'?L('Some fields are not valid: ','Alcuni campi non sono validi: ')+(j.fields||[]).join(', ')+'.'
+      :L('Something went wrong on our side and the submission was NOT sent. Please try again in a minute.','Qualcosa è andato storto e la candidatura NON è stata inviata. Riprova tra un minuto.')+HELP());
+  }catch(err){
+    document.getElementById('submitNote').style.display='none';
+    btn.classList.remove('disabled');btn.textContent='Send Submission';
+    const timeout=err&&(err.name==='TimeoutError'||err.name==='AbortError');
+    track('submit_fail',stage+' '+(err&&err.name||'')+' '+String(err&&err.message||'').slice(0,120));
+    failBanner((timeout?L('The upload is taking too long (slow connection?) and the submission was NOT sent.','L\'invio sta impiegando troppo (connessione lenta?) e la candidatura NON è stata inviata.')
+      :L('Connection problem: the submission was NOT sent.','Problema di connessione: la candidatura NON è stata inviata.'))+' '+L('Please try again, ideally on Wi-Fi.','Riprova, meglio se in Wi-Fi.')+HELP());
+  }
+});
+['fEmail','fConsent'].forEach(id=>{const el=document.getElementById(id);el.addEventListener('input',updateSubmit);el.addEventListener('change',updateSubmit);});
+document.addEventListener('tnp:avatar',updateSubmit);
+</script>
+</body>
+</html>
